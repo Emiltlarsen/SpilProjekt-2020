@@ -1,1 +1,3 @@
 # SpilProjekt-2020
+
+Vores nuværende ide lyder på en multiplayer platformer (på samme computer), hvorpå det gælder om at få den anden ud af banen. Dette gøres ved at samle tilfældige våben op som dropper ned rundt omkring. Våbene vil have forskellige karakteristikker og nogle vil være bedre end andre. Skyder du en med et våben vil de som udgangspunkt blive skubbet tilbage og miste liv. Desto mere liv man mister desto mere bliver man skubbet tilbage. 
