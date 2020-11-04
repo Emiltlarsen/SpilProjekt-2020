@@ -4,6 +4,21 @@
 
 
 
+function move1(e) {
+
+    //alert(e.KeyCode);
+    if(e.KeyCode==37) {
+        console.log("fuck nej, ")
+
+    }
+    if(e.KeyCode==39) {
+        console.log("fuck ja, ")
+
+    }
+
+}
+
+document.onkeydown = (move1)
 
 
 function hojrePil(event) {
