@@ -1,50 +1,40 @@
+var canvas = document.querySelector('#canvas');
+var context = canvas.getContext('2d');
 
+var xPos = 10;
+var yPos = 10;
 
-
+context.rect(xPos, yPos, 50, 50);
+context.stroke();
 
 
 
 function move1(e) {
 
     //alert(e.KeyCode);
-    if(e.KeyCode==37) {
-        console.log("fuck nej, ")
-
+    if(e.keyCode==37) {
+        console.log("Venstre pil")
+        xPos -= 5
     }
-    if(e.KeyCode==39) {
-        console.log("fuck ja, ")
-
+    if(e.keyCode==38) {
+        console.log("Op pil")
+        yPos -= 5
     }
+    if(e.keyCode==39) {
+        console.log("Højre pil")
+        xPos += 5
+    }
+    if(e.keyCode==40) {
+        console.log("Ned pil")
+        yPos += 5
+    }
+
+canvas.width = canvas.width;
+context.rect(xPos, yPos, 50, 50);
+context.stroke();
+
 
 }
 
-document.onkeydown = (move1)
+document.onkeydown = move1
 
-
-function hojrePil(event) {
-    var x = event.keyCode;
-    if (x == 39) {  // 37 er pilen til højre
-        alert("Højre pil er trykket ned");
-    }
-}
-
-function venstrePil(event) {
-    var x = event.keyCode;
-    if (x == 37) {  // 37 er pilen til venstre
-        console.log("Venstre pil er trykket ned");
-    }
-}
-
-function opPil(event) {
-    var x = event.keyCode;
-    if (x == 38) {  // 38 er pilen opad
-        console.log("Op-pilen er trykket ned");
-    }
-}
-
-function nedPil(event) {
-    var x = event.keyCode;
-    if (x == 40) {  // 40 er pilen nedad
-        console.log("Ned-pilen er trykket ned");
-    }
-}
