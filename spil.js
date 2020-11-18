@@ -36,18 +36,27 @@ character1Pos = {
 
 }
 
-context.rect(character1Pos.xPosTL, character1Pos.yPosTL, character1Pos.characterSizeX, character1Pos.characterSizeY);
-context.rect(100, 100, 100, 10);
-context.stroke();
+
 
 function setup() {
     createCanvas(500, 500);
     background(153);
+    rect(character1Pos.xPosTL, character1Pos.yPosTL, character1Pos.characterSizeX, character1Pos.characterSizeY);
+
 }
 
 
 
 function draw() {
+
+    function move() {
+        character1Pos.xPosTL = character1Pos.xPosTL + character1Pos.speedX
+        character1Pos.yPosTL = character1Pos.yPosTL + character1Pos.speedY
+    }
+
+    function stopMove() {
+        character1Pos.speedX = 0
+    }
 
     function move1(e) {
 
@@ -58,31 +67,30 @@ function draw() {
         }
         if(e.keyCode==38) {
             console.log("Op pil")
-    //        character1Pos.yPosTL -= 1;
+            //character1Pos.yPosTL -= 1;
         }
         if(e.keyCode==39) {
             console.log("Højre pil")
-            character1Pos.speedY += 1;
+            character1Pos.speedX += 1;
         }
         /*if(e.keyCode==40) {
             console.log("Ned pil")
             character1Pos.preyPos = character1Pos.yPosTL - 5;
             character1Pos.yPosTL += 1;
         }*/
-
-        canvas.width = canvas.width;
-        context.rect(character1Pos.xPosTL, character1Pos.yPosTL, character1Pos.characterSizeX, character1Pos.characterSizeY);
-        context.rect(100, 100, 100, 10);
-        context.stroke();
-        collision(character1Pos.xPos, character1Pos.yPos);
-
-
-        console.log(character1Pos.xPosTL);
-        console.log(character1Pos.yPosTL);
-
     }
 
+    collisionButtonY()
+    move()
+    stopMove
+    background(153);
+    rect(character1Pos.xPosTL, character1Pos.yPosTL, character1Pos.characterSizeX, character1Pos.characterSizeY);
+
+
+
+
     document.onkeydown = move1
+
 
 
     /*function collision() {
@@ -103,9 +111,8 @@ function draw() {
     function collisionTopY() {
         if (100 <= character1Pos.TL && character1Pos.TL <= 200 && 100 <= character1Pos.TL && character1Pos.TL <= 110 || 100 <= character1Pos.TR && character1Pos.TR <= 200 && 100 <= character1Pos.TR && character1Pos.TR <= 110) {
             character1Pos.speedY = -3;
-            console.log("1_______________")
+            console.log("123_____________")
         }
     }
-
 
 }
