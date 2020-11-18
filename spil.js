@@ -12,7 +12,13 @@ function setup() {
 
 
 function draw () {
+
+ if (200 < mouseX && mouseX < 400 && 300 < mouseY && mouseY < 400 ){
+   console.log("lmao")
+ }
+
     if (side === 2) {
         background(0);
      }
+     
 }
