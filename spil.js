@@ -117,39 +117,24 @@ function draw() {
 
 
 
-    /*function collision() {
-        if (100 <= character1Pos.xPos && character1Pos.xPos <= 200 && 100 <= character1Pos.yPos && character1Pos.yPos <= 110) {
-            character1Pos.xPos = character1Pos.prexPos;
-            character1Pos.yPos = character1Pos.preyPos;
-            console.log("1_______________")
-        }
-    }*/
 
-    //100 <= character1Pos.BL && character1Pos.BL <= 200 && 100 <= character1Pos.BL && character1Pos.BL <= 110 || 100 <= character1Pos.BR && character1Pos.BR <= 200 && 100 <= character1Pos.BR && character1Pos.BR <= 110
-
-    /*
-    function collisionButtonY() {
-        if (character1Pos.xPosTL < 100 + 300 &&
+    //kollision mellem to firkanter - gemmes til måske senere brug
+            /*(character1Pos.xPosTL < 100 + 300 &&
             character1Pos.xPosTL + 50 > 100 &&
             character1Pos.yPosTL < 101 + 10 &&
-            character1Pos.yPosTL + 50 > 99        
+            character1Pos.yPosTL + 50 > 99 */ 
+
+
+    function collisionButtonY() {
+        if (100 < character1Pos.xPosTL &&
+            character1Pos.xPosTL < 400 &&
+            (character1Pos.yPosTL + 50) === 102
+            ||
+            100 <= character1Pos.xPosTL + 50 &&
+            character1Pos.xPosTL <= 400 + 50 &&
+            character1Pos.yPosTL + 50 === 102
             ) {
             character1Pos.speedY = 0;
-        } else
-        fall()
-    }
-    */
-    function collisionButtonY() { //burde virke, but idk
-        if (100 <= character1Pos.xPosTL &&
-            character1Pos.xPosTL >= 300 &&
-            (character1Pos.yPosTL + 50) === 101 
-            /*||
-            100 <= character1Pos.xPosTR &&
-            character1Pos.xPosBR >= 300 &&
-            character1Pos.yPosBR === 101
-            */) {
-            character1Pos.speedY = 0;
-            console.log("jeg pis")
         } else
         fall()
     }
