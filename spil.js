@@ -69,8 +69,8 @@ function draw() {
     }
 
     function move() {
-        character1Pos.xPosTL += character1Pos.speedX
-        character1Pos.yPosTL += character1Pos.speedY
+        character1Pos.xPosTL += character1Pos.speedX;
+        character1Pos.yPosTL += character1Pos.speedY;
     }
 
     function stopMove() {
@@ -112,6 +112,7 @@ function draw() {
 
 
 
+
     document.onkeydown = move1;
 
 
@@ -126,14 +127,29 @@ function draw() {
 
     //100 <= character1Pos.BL && character1Pos.BL <= 200 && 100 <= character1Pos.BL && character1Pos.BL <= 110 || 100 <= character1Pos.BR && character1Pos.BR <= 200 && 100 <= character1Pos.BR && character1Pos.BR <= 110
 
+    /*
     function collisionButtonY() {
         if (character1Pos.xPosTL < 100 + 300 &&
             character1Pos.xPosTL + 50 > 100 &&
-            character1Pos.yPosTL < 100 + 10 &&
+            character1Pos.yPosTL < 101 + 10 &&
             character1Pos.yPosTL + 50 > 99        
             ) {
             character1Pos.speedY = 0;
-            console.log("1_______________")
+        } else
+        fall()
+    }
+    */
+    function collisionButtonY() { //burde virke, but idk
+        if (100 <= character1Pos.xPosTL &&
+            character1Pos.xPosTL >= 300 &&
+            (character1Pos.yPosTL + 50) === 101 
+            /*||
+            100 <= character1Pos.xPosTR &&
+            character1Pos.xPosBR >= 300 &&
+            character1Pos.yPosBR === 101
+            */) {
+            character1Pos.speedY = 0;
+            console.log("jeg pis")
         } else
         fall()
     }

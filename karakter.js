@@ -14,5 +14,4 @@ class Spiller {
         rect(this.x, this.y, this.width, this.heigth);
     }
 
-    
 }
