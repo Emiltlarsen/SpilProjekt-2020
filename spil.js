@@ -12,6 +12,10 @@ function setup() {
     background(153);
 }
 
+function draw() {
+    rect(250, 250, 55, 55)
+}
+
 function move1(e) {
 
     //alert(e.KeyCode);
