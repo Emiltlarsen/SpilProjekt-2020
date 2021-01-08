@@ -1,20 +1,27 @@
-var canvasW = 1000
-var canvasH = 500
+var canvasW = 1600
+var canvasH = 740
 var side = 0
 
 
 
 function setup() {
     createCanvas(canvasW, canvasH);
-    background(153);
-
+    //background(153);
+    document.body.style.backgroundImage = "url('StartsideP.png')";
   }
 
+
   function mouseClicked(){
-    if (side === 0 && 200 < mouseX && mouseX < 400 && 300 < mouseY && mouseY < 400){
+    if (side === 0 && 625 < mouseX && mouseX < 974 && 428 < mouseY && mouseY < 527){
       console.log("lmao")
       
       side = 1;
+    }
+
+    if (side === 0 && 625 < mouseX && mouseX < 974 && 550 < mouseY && mouseY < 653){
+      console.log("lmao")
+      
+      side = 2;
     }
 
   }
@@ -24,7 +31,7 @@ function draw () {
   }
 
   if (side === 2){
-    rect(234,234,234,234)
+    document.body.style.backgroundImage = "url('SettingssideP.png')"
   }
 
 
