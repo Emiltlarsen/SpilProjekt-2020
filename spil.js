@@ -48,24 +48,45 @@ function setup() {
     background(153);
     rect(character1Pos.xPosTL, character1Pos.yPosTL, character1Pos.characterSizeX, character1Pos.characterSizeY);
     rect(100, 100, 300, 10);
+    frameRate(10)
 
 }
 
-
+onCooldown = false
+function disableState(){
+    var firstExecution = 0
+    var interval = 1000
+    var date = new Date();
+    var milliseconds = date.getTime(); 
+    if((milliseconds - firstExecution) > interval){
+        firstExecution = milliseconds;
+        onCooldown = false
+    } else {
+        onCooldown = true
+        console.log("Cooldown")
+    }
+}
 
 function draw() {
     function jump() {
-        character1Pos.speedY = -10
-        for (let i = 0; i < 2; i++) {
+        character1Pos.speedY = -20
+        for (let i = -20; i > 20; i++) {
             character1Pos.speedY =+ i;
         }
     }
 
-    function fall() {
-        if (character1Pos.speedY = +1) {
-            character1Pos.speedY = +1
+    /*function jump() {
+        character1Pos.speedY = -100
+        for (let i = 0; i < 2; i++) {
+            character1Pos.speedY =+ i;
         }
+    } ned???*/
 
+
+    function fall(char) {
+        if (char.speedY = +1 || onCooldown === false) {
+            char.speedY = +1
+        }
     }
 
     function move() {
@@ -78,7 +99,6 @@ function draw() {
     }
 
     function move1(e) {
-
         //alert(e.KeyCode);
         if(e.keyCode==37) {
             console.log("Venstre pil")
@@ -86,7 +106,9 @@ function draw() {
         }
         if(e.keyCode==38) {
             console.log("Op pil")
-            jump()
+            if (onCooldown === false) {
+                jump()
+            }
             //character1Pos.yPosTL -= 1;
         }
         if(e.keyCode==39) {
@@ -102,16 +124,11 @@ function draw() {
 
 
     move()
-    collisionButtonY()
-    stopMove
+    collisionButtonY(character1Pos)
     background(153);
     rect(character1Pos.xPosTL, character1Pos.yPosTL, character1Pos.characterSizeX, character1Pos.characterSizeY);
     rect(100, 100, 300, 10);
-    //fall()
-
-
-
-
+    fall(character1Pos)
 
     document.onkeydown = move1;
 
@@ -125,16 +142,16 @@ function draw() {
             character1Pos.yPosTL + 50 > 99 */ 
 
 
-    function collisionButtonY() {
-        if (100 < character1Pos.xPosTL &&
-            character1Pos.xPosTL < 400 &&
-            (character1Pos.yPosTL + 50) === 102
+    function collisionButtonY(char) {
+        if (100 < char.xPosTL &&
+            char.xPosTL < 349 &&
+            (char.yPosTL + 50) === 99
             ||
-            100 <= character1Pos.xPosTL + 50 &&
-            character1Pos.xPosTL <= 400 + 50 &&
-            character1Pos.yPosTL + 50 === 102
+            100 <= char.xPosTL + 50 &&
+            char.xPosTL <= 349 + 50 &&
+            char.yPosTL + 50 === 99
             ) {
-            character1Pos.speedY = 0;
+                char.speedY = 0;
         } else
         fall()
     }
