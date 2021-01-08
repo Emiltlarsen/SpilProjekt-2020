@@ -1,8 +1,9 @@
 //var canvas = document.querySelector('#canvas');
 //var context = canvas.getContext('2d');
 
-var xPos = 10;
-var yPos = 10;
+
+//var xPos = 10;
+//var yPos = 10;
 
 //context.rect(xPos, yPos, 50, 50);
 //context.stroke();
