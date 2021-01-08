@@ -9,13 +9,20 @@ var yPos = 10;
 
 function setup() {
     createCanvas(500, 500);
-    background(153);
+
+
+    player1 = new Player();
+    Player2 = new Player();
 }
 
 function draw() {
-    rect(250, 250, 55, 55)
-}
+    background(153);
 
+    player1.display();
+    player2.display();
+
+}
+/*
 function move1(e) {
 
     //alert(e.KeyCode);
@@ -42,6 +49,21 @@ context.stroke();
 
 
 }
-
 document.onkeydown = move1
+*/
+class Player {
+    constructor() {
+        this.x = 50;
+        this.y = 50;
+        this.diameter = 30(10, 30);
+        this.speed = 1;
+    }
+
+    display(){
+        rect(this.x, this.y, this.diameter, this.diameter)
+    }
+    
+
+}
+
 
