@@ -39,7 +39,7 @@ character1Pos = {
 
 }
 
-
+var coll = false
 
 
 
@@ -68,10 +68,12 @@ function disableState(){
 }
 
 function draw() {
-    function jump() {
-        character1Pos.speedY = -20
+
+
+    function jump(char) {
+        char.speedY = -20
         for (let i = -20; i > 20; i++) {
-            character1Pos.speedY =+ i;
+            char.speedY =+ i;
         }
     }
 
@@ -84,21 +86,22 @@ function draw() {
 
 
     function fall(char) {
-        if (char.speedY = +1 || onCooldown === false) {
+        if (char.speedY = +1 && onCooldown === false && coll === false) {
             char.speedY = +1
-        }
+        } else
+        char.speedY = 0;
     }
 
-    function move() {
-        character1Pos.xPosTL += character1Pos.speedX;
-        character1Pos.yPosTL += character1Pos.speedY;
+    function move(char) {
+        char.xPosTL += char.speedX;
+        char.yPosTL += char.speedY;
     }
 
     function stopMove() {
         character1Pos.speedX = 0
     }
 
-    function move1(e) {
+    function controls(e) {
         //alert(e.KeyCode);
         if(e.keyCode==37) {
             console.log("Venstre pil")
@@ -107,7 +110,7 @@ function draw() {
         if(e.keyCode==38) {
             console.log("Op pil")
             if (onCooldown === false) {
-                jump()
+                jump(character1Pos)
             }
             //character1Pos.yPosTL -= 1;
         }
@@ -123,14 +126,13 @@ function draw() {
     }
 
 
-    move()
+    move(character1Pos)
     collisionButtonY(character1Pos)
     background(153);
     rect(character1Pos.xPosTL, character1Pos.yPosTL, character1Pos.characterSizeX, character1Pos.characterSizeY);
     rect(100, 100, 300, 10);
     fall(character1Pos)
-
-    document.onkeydown = move1;
+    document.onkeydown = controls;
 
 
 
@@ -151,9 +153,11 @@ function draw() {
             char.xPosTL <= 349 + 50 &&
             char.yPosTL + 50 === 99
             ) {
-                char.speedY = 0;
+                coll = true
+                //char.speedY = 0;
+                console.log("collision med blok")
         } else
-        fall()
+        coll = false
     }
 
 
@@ -164,5 +168,7 @@ function draw() {
             console.log("123_____________")
         }
     }
+
+
 
 }
