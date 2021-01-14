@@ -36,60 +36,64 @@ character1Pos = {
 
     speedX : 0,
     speedY : 0,
-
 }
 
 var coll = false
 
 
 
+onCooldown = false
+function disableState(Seconds) { //fix+^^
+    var date = new Date();
+    var currentDate = date.getTime();
+    currentDate /= 1000;
+    console.log(currentDate);
+    var goalDate = currentDate + Seconds;
+    console.log(goalDate);
+    console.log("Cooldown Set");
+
+    function checkCooldown() {
+        if (goalDate < currentDate){
+            onCooldown = false;
+            console.log("REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+            return
+        } else {
+            onCooldown = true
+            console.log("Cooldown")
+            currentDate += 1/60
+            checkCooldown()
+        }
+    }
+
+    checkCooldown();  
+}
+
 function setup() {
     createCanvas(500, 500);
     background(153);
     rect(character1Pos.xPosTL, character1Pos.yPosTL, character1Pos.characterSizeX, character1Pos.characterSizeY);
     rect(100, 100, 300, 10);
-    frameRate(10)
-
+    frameRate(60)
 }
 
-onCooldown = false
-function disableState(){
-    var firstExecution = 0
-    var interval = 1000
-    var date = new Date();
-    var milliseconds = date.getTime(); 
-    if((milliseconds - firstExecution) > interval){
-        firstExecution = milliseconds;
-        onCooldown = false
-    } else {
-        onCooldown = true
-        console.log("Cooldown")
-    }
-}
+
 
 function draw() {
-
+    disableState(1000)
 
     function jump(char) {
-        char.speedY = -20
-        for (let i = -20; i > 20; i++) {
-            char.speedY =+ i;
-        }
+        char.speedY = -100
+    } //fix
+
+    function ned() {
+        character1Pos.speedY = +1
     }
 
-    /*function jump() {
-        character1Pos.speedY = -100
-        for (let i = 0; i < 2; i++) {
-            character1Pos.speedY =+ i;
-        }
-    } ned???*/
-
-
     function fall(char) {
-        if (char.speedY = +1 && onCooldown === false && coll === false) {
-            char.speedY = +1
-        } else
-        char.speedY = 0;
+        if (coll === false) {
+            char.speedY = 1
+        } else if (coll === true)
+            char.speedY = 0;
     }
 
     function move(char) {
@@ -118,11 +122,12 @@ function draw() {
             console.log("Højre pil")
             character1Pos.speedX += 1;
         }
-        /*if(e.keyCode==40) {
+        if(e.keyCode==40) {
             console.log("Ned pil")
-            character1Pos.preyPos = character1Pos.yPosTL - 5;
-            character1Pos.yPosTL += 1;
-        }*/
+            if (coll === true) {
+                ned()
+            }
+        }
     }
 
 
@@ -154,7 +159,6 @@ function draw() {
             char.yPosTL + 50 === 99
             ) {
                 coll = true
-                //char.speedY = 0;
                 console.log("collision med blok")
         } else
         coll = false
