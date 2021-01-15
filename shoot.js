@@ -1,27 +1,27 @@
-class Skud {
-    constructor(x, y, radius, color, velocity) {
-        this.x = x
-        this.y = y
-        this.radius = radius
-        this.color = color
-        this.velocity = velocity
-    }
+var x = 100;
+var y = 100; 
+var diam = 40;
+var xspeed = 4;
+var yspeed = 0;
 
-    draw() {
-        c.beginPath()
-        c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
-        c.fillstyle = this.color
-        c.fill()
-    }
+function setup() {
+    creteCanvas(600,600)
 }
 
-addEventListener('click', (event) => {
-const Projectile = new Projectile(
-    event.clientX, 
-    event.clientY, 
-    5, 
-    'red', 
-    null)
+function draw() {
+    background(0);
+    display();
+    moveBy();
+}
 
+function display() {
+    stroke(255);
+    strokeWeight(3);
+    fill(0,0,0);
+    ellipse(x, y, diam, diam); 
+}
 
-})
+function move() {
+y += yspeed;
+x += xspeed;
+}
