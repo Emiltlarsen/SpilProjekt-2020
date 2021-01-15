@@ -38,71 +38,88 @@ character1Pos = {
     speedY : 0,
 }
 
-var coll = false
-
-
-
-onCooldown = false
-function disableState(Seconds) { //fix+^^
-    var date = new Date();
-    var currentDate = date.getTime();
-    currentDate /= 1000;
-    console.log(currentDate);
-    var goalDate = currentDate + Seconds;
-    console.log(goalDate);
-    console.log("Cooldown Set");
-
-    function checkCooldown() {
-        if (goalDate < currentDate){
-            onCooldown = false;
-            console.log("REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
-            return
-        } else {
-            onCooldown = true
-            console.log("Cooldown")
-            currentDate += 1/60
-            checkCooldown()
-        }
-    }
-
-    checkCooldown();  
-}
 
 function setup() {
-    createCanvas(500, 500);
+    createCanvas(1600, 740);
     background(153);
     rect(character1Pos.xPosTL, character1Pos.yPosTL, character1Pos.characterSizeX, character1Pos.characterSizeY);
     rect(100, 100, 300, 10);
     frameRate(60)
+    coll = false
+    //onCooldown = false
+    jumpActive = false
 }
 
 
 
 function draw() {
-    disableState(1000)
+    move(character1Pos)
+    collisionButtonY(character1Pos)
+    background(153);
+    rect(character1Pos.xPosTL, character1Pos.yPosTL, character1Pos.characterSizeX, character1Pos.characterSizeY);
+    rect(100, 100, 300, 10);
+    updateJump(character1Pos)
+    fall(character1Pos)
+    document.onkeydown = controls;
+
+
+
+    /*function disableState(seconds) {
+        timeSeconds = seconds * 60
+        onCooldown = true
+        checkCooldown();
+    }
+    function checkCooldown() {
+        if (timeSeconds > 0){
+            timeSeconds--
+            console.log(timeSeconds)
+        } else
+        onCooldown = false
+    }
+    if (onCooldown === true) {
+        console.log("TimerActive")
+        checkCooldown()
+    }*/
 
     function jump(char) {
-        char.speedY = -100
-    } //fix
+            jumpActive = true
+            char.speedY = -50;
+    }
+
+    function updateJump(char) {
+        if (jumpActive === true) {
+            if (char.speedY < 1) {
+                char.speedY++
+                console.log("fuck ja")
+            } else {
+                jumpActive = false
+                console.log("fuck nej")
+            }
+        }
+    }
+
+
+    if (jumpActive === true) {
+        console.log("rerere")
+        updateJump()
+    }
+
+
 
     function ned() {
         character1Pos.speedY = +1
     }
 
     function fall(char) {
-        if (coll === false) {
+        if (coll === false && jumpActive === false) {
             char.speedY = 1
-        } else if (coll === true)
+        } else if (coll === true && jumpActive === false)
             char.speedY = 0;
     }
 
     function move(char) {
         char.xPosTL += char.speedX;
         char.yPosTL += char.speedY;
-    }
-
-    function stopMove() {
-        character1Pos.speedX = 0
     }
 
     function controls(e) {
@@ -113,10 +130,9 @@ function draw() {
         }
         if(e.keyCode==38) {
             console.log("Op pil")
-            if (onCooldown === false) {
-                jump(character1Pos)
+            if (jumpActive === false) {
+                jump(character1Pos);
             }
-            //character1Pos.yPosTL -= 1;
         }
         if(e.keyCode==39) {
             console.log("Højre pil")
@@ -129,25 +145,6 @@ function draw() {
             }
         }
     }
-
-
-    move(character1Pos)
-    collisionButtonY(character1Pos)
-    background(153);
-    rect(character1Pos.xPosTL, character1Pos.yPosTL, character1Pos.characterSizeX, character1Pos.characterSizeY);
-    rect(100, 100, 300, 10);
-    fall(character1Pos)
-    document.onkeydown = controls;
-
-
-
-
-    //kollision mellem to firkanter - gemmes til måske senere brug
-            /*(character1Pos.xPosTL < 100 + 300 &&
-            character1Pos.xPosTL + 50 > 100 &&
-            character1Pos.yPosTL < 101 + 10 &&
-            character1Pos.yPosTL + 50 > 99 */ 
-
 
     function collisionButtonY(char) {
         if (100 < char.xPosTL &&
@@ -165,6 +162,11 @@ function draw() {
     }
 
 
+    //kollision mellem to firkanter - gemmes til måske senere brug
+            /*(character1Pos.xPosTL < 100 + 300 &&
+            character1Pos.xPosTL + 50 > 100 &&
+            character1Pos.yPosTL < 101 + 10 &&
+            character1Pos.yPosTL + 50 > 99 */ 
 
     function collisionTopY() {
         if (100 <= character1Pos.TL && character1Pos.TL <= 200 && 100 <= character1Pos.TL && character1Pos.TL <= 110 || 100 <= character1Pos.TR && character1Pos.TR <= 200 && 100 <= character1Pos.TR && character1Pos.TR <= 110) {
