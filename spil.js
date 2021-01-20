@@ -39,6 +39,86 @@ character1Pos = {
 }
 
 
+function jump(char) {
+    jumpActive = true;
+    char.speedY = -15;
+}
+
+function updateJump(char) {
+    if (jumpActive === true) {
+        if (char.speedY < 1) {
+            char.speedY++;
+        } else if (coll === true) {
+            jumpActive = false;
+        }
+    }
+}
+
+function ned(char) {
+    char.speedY++
+}
+
+function fall(char) {
+    if (coll === false && jumpActive === false) {
+        char.speedY = 1
+    } else if (coll === true && jumpActive === false)
+        char.speedY = 0;
+}
+
+function move(char) {
+    char.xPosTL += char.speedX;
+    char.yPosTL += char.speedY;
+}
+
+function controls(e) {
+//alert(e.KeyCode);
+    if(e.keyCode==37) {
+        console.log("Venstre pil")
+        character1Pos.speedX = -1;
+    }
+    if(e.keyCode==38) {
+        console.log("Op pil")
+        if (jumpActive === false) {
+            jump(character1Pos);
+        }
+    }
+    if(e.keyCode==39) {
+        console.log("Højre pil")
+        character1Pos.speedX = 1;
+    }
+    if(e.keyCode==40) {
+        console.log("Ned pil")
+        if (coll === true) {
+            ned(character1Pos)
+        }
+    }
+}
+
+function collisionButtonY(char) {
+    if (100 < char.xPosTL &&
+        char.xPosTL < 349 &&
+        (char.yPosTL + 50) === 99
+        ||
+        100 <= char.xPosTL + 50 &&
+        char.xPosTL <= 349 + 50 &&
+        char.yPosTL + 50 === 99
+        ) {
+            coll = true
+            console.log("collision med blok")
+    } else
+    coll = false
+}
+
+function keyReleased() {
+    if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
+        character1Pos.speedX = 0;
+        console.log("TEST")
+    }
+    return false
+}
+
+
+
 function setup() {
     createCanvas(1600, 740);
     background(153);
@@ -52,6 +132,7 @@ function setup() {
 
 
 
+
 function draw() {
     move(character1Pos)
     collisionButtonY(character1Pos)
@@ -62,6 +143,11 @@ function draw() {
     fall(character1Pos)
     document.onkeydown = controls;
 
+
+    if (jumpActive === true) {
+        console.log("rerere")
+        updateJump(character1Pos)
+        }
 
 
     /*function disableState(seconds) {
@@ -81,85 +167,7 @@ function draw() {
         checkCooldown()
     }*/
 
-    function jump(char) {
-            jumpActive = true
-            char.speedY = -50;
-    }
 
-    function updateJump(char) {
-        if (jumpActive === true) {
-            if (char.speedY < 1) {
-                char.speedY++
-                console.log("fuck ja")
-            } else {
-                jumpActive = false
-                console.log("fuck nej")
-            }
-        }
-    }
-
-
-    if (jumpActive === true) {
-        console.log("rerere")
-        updateJump()
-    }
-
-
-
-    function ned() {
-        character1Pos.speedY = +1
-    }
-
-    function fall(char) {
-        if (coll === false && jumpActive === false) {
-            char.speedY = 1
-        } else if (coll === true && jumpActive === false)
-            char.speedY = 0;
-    }
-
-    function move(char) {
-        char.xPosTL += char.speedX;
-        char.yPosTL += char.speedY;
-    }
-
-    function controls(e) {
-        //alert(e.KeyCode);
-        if(e.keyCode==37) {
-            console.log("Venstre pil")
-            character1Pos.speedX -= 1;
-        }
-        if(e.keyCode==38) {
-            console.log("Op pil")
-            if (jumpActive === false) {
-                jump(character1Pos);
-            }
-        }
-        if(e.keyCode==39) {
-            console.log("Højre pil")
-            character1Pos.speedX += 1;
-        }
-        if(e.keyCode==40) {
-            console.log("Ned pil")
-            if (coll === true) {
-                ned()
-            }
-        }
-    }
-
-    function collisionButtonY(char) {
-        if (100 < char.xPosTL &&
-            char.xPosTL < 349 &&
-            (char.yPosTL + 50) === 99
-            ||
-            100 <= char.xPosTL + 50 &&
-            char.xPosTL <= 349 + 50 &&
-            char.yPosTL + 50 === 99
-            ) {
-                coll = true
-                console.log("collision med blok")
-        } else
-        coll = false
-    }
 
 
     //kollision mellem to firkanter - gemmes til måske senere brug
@@ -178,3 +186,4 @@ function draw() {
 
 
 }
+
