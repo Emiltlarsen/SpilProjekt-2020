@@ -30,4 +30,4 @@ Milestone 2
 - System med liv, altså noget sker når man bliver skudt ()
 
 Slut
-- ??
+- evt. gør movement mere clean
