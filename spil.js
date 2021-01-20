@@ -1,18 +1,15 @@
 var canvasW = 1600
 var canvasH = 740
 var side = 0
+let bg;
+let set;
 
 
-
-function preload(){
-  img = loadImage('SettingssideP2.png');
-}
 
 function setup() {
+    bg = loadImage('StartsideP.png');
+    set = loadImage('SettingssideP2.png')
     createCanvas(canvasW, canvasH);
-    //background(153);
-    document.body.style.backgroundImage = "url('StartsideP.png')";
-    document.body.style.backgroundRepeat = "no-repeat";
   }
 
 
@@ -38,19 +35,25 @@ function setup() {
 
   }
 function draw () {
-  if (side === 0 && 618 < mouseX && mouseX < 965 && 421 < mouseY && mouseY < 518){
-    fill(0,0,0,1);
-    rect(618,421,347,97);
-  } else {
-    removeElements();
+  background(bg);
+//Starts knap lys
+  if (side === 0 && 625 < mouseX && mouseX < (625 + 348) && 428 < mouseY && mouseY < (428 + 98)){
+    fill(0,0,0,63);
+    rect(625,428,349,100);
+  } 
+//Settings knap lys
+  if (side === 0 && 625 < mouseX && mouseX < (625 + 349) && 542 < mouseY && mouseY < 642){
+    fill(0,0,0,63);
+    rect(625,542,349,100);
+  } 
+//Tilbage knap lys
+  if (side === 2 && 8 < mouseX && mouseX < 128 && 8 < mouseY && mouseY < 59){
+    background(set);
+    fill(0,0,0,63);
+    rect(8,8,120,51);
+  } else if (side === 2){
+    background(set);
   }
 
-  if (side === 2){
-    document.body.style.backgroundImage = "url('SettingssideP2.png')";
-  }
 
-  if (side === 0){
-    document.body.style.backgroundImage = "url('StartsideP.png')";
-  }
-   
 }
