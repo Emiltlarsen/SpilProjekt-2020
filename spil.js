@@ -124,29 +124,29 @@ function setup() {
     rect(character1Pos.xPosTL, character1Pos.yPosTL, character1Pos.characterSizeX, character1Pos.characterSizeY);
     rect(100, 100, 300, 10);
     frameRate(60)
-    let mySpiller = new Spiller(200, 100, 50, 100, 0, 0) ;
-    coll = false
+    let Spiller1 = new Spiller(200, 100, 50, 100, 0, 0) ;
+    //coll = false
     //onCooldown = false
-    jumpActive = false
+    //jumpActive = false
 }
 
 
 
 
 function draw() {
-    move(character1Pos)
-    collisionButtonY(character1Pos)
+    //move(character1Pos)
+    Spiller1.move()
+    //collisionButtonY(character1Pos)
+    Spiller1.collisionButtonY()
     background(153);
-    rect(character1Pos.xPosTL, character1Pos.yPosTL, character1Pos.characterSizeX, character1Pos.characterSizeY);
+    //rect(character1Pos.xPosTL, character1Pos.yPosTL, character1Pos.characterSizeX, character1Pos.characterSizeY);
+    Spiller1.tegn()
     rect(100, 100, 300, 10);
-    updateJump(character1Pos)
-    fall(character1Pos)
+    //updateJump(character1Pos)
+    Spiller1.updateJump()
+    //fall(character1Pos)
+    Spiller1.fall()
     document.onkeydown = controls;
-
-
-    if (jumpActive === true) {
-        updateJump(character1Pos)
-    }
 
 
     /*function disableState(seconds) {

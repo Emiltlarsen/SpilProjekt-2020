@@ -7,21 +7,21 @@ class Spiller {
         this.speedX = speedX;
         this.speedY = speedY;
         this.coll = false;
-        this.jumpActive = false
+        this.jumpActive = false;
         this.col = [250, 0, 0];
     }
 
 
-    tegn = function () {
-        Fill(this.col);
+    tegn() {
         rect(this.x, this.y, this.width, this.heigth);
+        Fill(this.col);
     }
 
     jump() {
         this.jumpActive = true;
         this.speedY = -15;
     }
-    
+
     updateJump() {
         if (this.jumpActive === true) {
             if (this.speedY < 1) {
@@ -29,12 +29,6 @@ class Spiller {
             } else if (this.coll === true) {
                 this.jumpActive = false;
             }
-        }
-    }
-    
-    checkJumpActive() {
-        if (this.jumpActive === true) {
-            updateJump()
         }
     }
 
