@@ -124,6 +124,7 @@ function setup() {
     rect(character1Pos.xPosTL, character1Pos.yPosTL, character1Pos.characterSizeX, character1Pos.characterSizeY);
     rect(100, 100, 300, 10);
     frameRate(60)
+    let mySpiller = new Spiller(200, 100, 50, 100, 0, 0) ;
     coll = false
     //onCooldown = false
     jumpActive = false
@@ -145,7 +146,7 @@ function draw() {
 
     if (jumpActive === true) {
         updateJump(character1Pos)
-        }
+    }
 
 
     /*function disableState(seconds) {
