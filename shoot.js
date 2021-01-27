@@ -1,27 +1,18 @@
-var x = 100;
-var y = 100; 
-var diam = 40;
-var xspeed = 4;
-var yspeed = 0;
+var x = 50;
+var y = 50;
+var speed = 2; 
 
-function setup() {
-    creteCanvas(600,600)
+
+function keyPressed() {
+    if (keyCode === ".") {
+        function draw() {
+            stroke(50);
+            fill(100);
+            ellipse(x, y, 24, 24)
+        
+            x = x + speed;
+        }
+        
+    }
 }
 
-function draw() {
-    background(0);
-    display();
-    moveBy();
-}
-
-function display() {
-    stroke(255);
-    strokeWeight(3);
-    fill(0,0,0);
-    ellipse(x, y, diam, diam); 
-}
-
-function move() {
-y += yspeed;
-x += xspeed;
-}
