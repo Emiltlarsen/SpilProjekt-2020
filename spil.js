@@ -109,10 +109,9 @@ function collisionButtonY(char) {
     coll = false
 }
 
-function keyReleased() {
+function keyReleased() { //der er her palds til forbedringer i forhold til helt clean movement. 
     if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
         character1Pos.speedX = 0;
-        console.log("TEST")
     }
     return false
 }
@@ -145,7 +144,6 @@ function draw() {
 
 
     if (jumpActive === true) {
-        console.log("rerere")
         updateJump(character1Pos)
         }
 
@@ -176,14 +174,13 @@ function draw() {
             character1Pos.yPosTL < 101 + 10 &&
             character1Pos.yPosTL + 50 > 99 */ 
 
-    function collisionTopY() {
+    /*function collisionTopY() {
         if (100 <= character1Pos.TL && character1Pos.TL <= 200 && 100 <= character1Pos.TL && character1Pos.TL <= 110 || 100 <= character1Pos.TR && character1Pos.TR <= 200 && 100 <= character1Pos.TR && character1Pos.TR <= 110) {
             character1Pos.speedY = 1;
             console.log("123_____________")
         }
-    }
+    }*/
 
 
 
 }
-
