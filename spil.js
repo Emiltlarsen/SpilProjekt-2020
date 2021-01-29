@@ -38,6 +38,8 @@ character1Pos = {
     speedY : 0,
 }
 
+let Spiller1 = new Spiller(300, 20, 50, 75, 0, 0);
+
 
 /*function jump(char) {
     jumpActive = true;
@@ -86,41 +88,41 @@ function collisionButtonY(char) {
     } else
     coll = false
 }
+*/
 
 function keyReleased() { //der er her palds til forbedringer i forhold til helt clean movement. 
     if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
         character1Pos.speedX = 0;
     }
     return false
-}*/
+}
 
 
 function controls(e) {
     //alert(e.KeyCode);
         if(e.keyCode==37) {
             console.log("Venstre pil")
-            character1Pos.speedX = -1;
+            Spiller1.speedX = -1
         }
         if(e.keyCode==38) {
             console.log("Op pil")
-            if (jumpActive === false) {
-                jump(character1Pos);
+            if (Spiller1.jumpActive === false) {
+                Spiller1.jump();
             }
         }
         if(e.keyCode==39) {
             console.log("Højre pil")
-            character1Pos.speedX = 1;
+            Spiller1.speedX = 1
         }
         if(e.keyCode==40) {
             console.log("Ned pil")
-            if (coll === true) {
-                ned(character1Pos)
+            if (Spiller1.collision === true) {
+                Spiller1.ned()
             }
         }
-    }
+}
 
 
-let Spiller1 = new Spiller(300, 20, 50, 75, 0, 0);
 
 
 function setup() {
@@ -151,6 +153,7 @@ function draw() {
     Spiller1.updateJump();
     //fall(character1Pos)
     Spiller1.fall();
+    Spiller1.keyReleased()
     document.onkeydown = controls;
 
 

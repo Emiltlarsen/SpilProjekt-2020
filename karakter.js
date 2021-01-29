@@ -6,7 +6,7 @@ class Spiller {
         this.heigth = heigth;
         this.speedX = speedX;
         this.speedY = speedY;
-        this.coll = false;
+        this.collision = false;
         this.jumpActive = false;
         this.col = [255, 0, 0];
     }
@@ -26,7 +26,7 @@ class Spiller {
         if (this.jumpActive === true) {
             if (this.speedY < 1) {
                 this.speedY++;
-            } else if (this.coll === true) {
+            } else if (this.collision === true) {
                 this.jumpActive = false;
             }
         }
@@ -37,9 +37,9 @@ class Spiller {
     }
     
     fall() {
-        if (coll === false && this.jumpActive === false) {
+        if (this.collision === false && this.jumpActive === false) {
             this.speedY = 1
-        } else if (this.coll === true && this.jumpActive === false)
+        } else if (this.collision === true && this.jumpActive === false)
             this.speedY = 0;
     }
     
@@ -57,10 +57,17 @@ class Spiller {
             this.x <= 349 + 50 &&
             this.y + 50 === 99
             ) {
-                this.coll = true
+                this.collision = true
                 console.log("collision med platform")
         } else
-        this.coll = false
+        this.collision = false
+    }
+
+    keyReleased() { //der er her palds til forbedringer i forhold til helt clean movement. 
+        if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
+            this.speedX = 0;
+        }
+        return false
     }
 }
 
