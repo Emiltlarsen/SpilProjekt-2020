@@ -120,6 +120,8 @@ function controls(e) {
     }
 
 
+let Spiller1 = new Spiller(300, 20, 50, 75, 0, 0);
+
 
 function setup() {
     createCanvas(1600, 740);
@@ -127,7 +129,6 @@ function setup() {
     rect(character1Pos.xPosTL, character1Pos.yPosTL, character1Pos.characterSizeX, character1Pos.characterSizeY);
     rect(100, 100, 300, 10);
     frameRate(60);
-    let Spiller1 = new Spiller(300, 20, 50, 75, 0, 0);
     Spiller1.tegn();
     //coll = false
     //onCooldown = false

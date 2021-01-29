@@ -8,7 +8,7 @@ class Spiller {
         this.speedY = speedY;
         this.coll = false;
         this.jumpActive = false;
-        this.col = [250, 0, 0];
+        this.col = [255, 0, 0];
     }
 
 
