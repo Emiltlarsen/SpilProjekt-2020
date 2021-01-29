@@ -70,31 +70,3 @@ class Spiller {
         return false
     }
 }
-
-
-/*startPosC1X = 200;
-startPosC1Y = 10;
-
-
-character1Pos = {
-    characterSizeX : 50,
-    characterSizeY : 50,
-
-    centerxPos : startPosC1X + (characterSizeX / 2),
-    centeryPos : startPosC1Y + (characterSizeY / 2),
-
-//    prexPos : centerxPos,
-//    preyPos : centeryPos,
-    
-    xPosTL : centerxPos - characterSizeX / 2,    //top left
-    yPosTL : centeryPos - characterSizeY / 2,    //top left
-    xPosTR : centerxPos + characterSizeX / 2,    //top right
-    yPosTR : centeryPos - characterSizeY / 2,    //top right
-    xPosBL : centerxPos - characterSizeX / 2,    //button left
-    yPosBL : centeryPos + characterSizeY / 2,    //button left
-    xPosBR : centerxPos + characterSizeX / 2,    //button right
-    yPosBR : centeryPos + characterSizeY / 2,    //button right
-
-    speedX : 0,
-    speedY : 0,
-}*/
