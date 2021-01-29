@@ -188,6 +188,7 @@ function draw() {
     collisionButtonY(character1Pos)
     background(bg); //*Skal laves med platform
     rect(character1Pos.xPosTL, character1Pos.yPosTL, character1Pos.characterSizeX, character1Pos.characterSizeY);
+    fill(255);
     rect(100, 100, 300, 10);
     updateJump(character1Pos)
     fall(character1Pos)
