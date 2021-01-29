@@ -1,5 +1,5 @@
 class Spiller {
-    constructor(x, y, width, heigth, speedX, speedY) {
+    constructor(x, y, width, heigth, speedX, speedY, colR, colG, colB) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -8,13 +8,13 @@ class Spiller {
         this.speedY = speedY;
         this.collision = false;
         this.jumpActive = false;
-        this.col = [255, 0, 0];
+        this.col = [colR, colG, colB];
     }
 
 
     tegn() {
-        rect(this.x, this.y, this.width, this.heigth);
         fill(this.col);
+        rect(this.x, this.y, this.width, this.heigth);
     }
 
     jump() {
