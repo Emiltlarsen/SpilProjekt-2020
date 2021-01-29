@@ -39,7 +39,7 @@ character1Pos = {
 }
 
 
-function jump(char) {
+/*function jump(char) {
     jumpActive = true;
     char.speedY = -15;
 }
@@ -70,29 +70,7 @@ function move(char) {
     char.yPosTL += char.speedY;
 }
 
-function controls(e) {
-//alert(e.KeyCode);
-    if(e.keyCode==37) {
-        console.log("Venstre pil")
-        character1Pos.speedX = -1;
-    }
-    if(e.keyCode==38) {
-        console.log("Op pil")
-        if (jumpActive === false) {
-            jump(character1Pos);
-        }
-    }
-    if(e.keyCode==39) {
-        console.log("Højre pil")
-        character1Pos.speedX = 1;
-    }
-    if(e.keyCode==40) {
-        console.log("Ned pil")
-        if (coll === true) {
-            ned(character1Pos)
-        }
-    }
-}
+
 
 function collisionButtonY(char) {
     if (100 < char.xPosTL &&
@@ -114,7 +92,32 @@ function keyReleased() { //der er her palds til forbedringer i forhold til helt 
         character1Pos.speedX = 0;
     }
     return false
-}
+}*/
+
+
+function controls(e) {
+    //alert(e.KeyCode);
+        if(e.keyCode==37) {
+            console.log("Venstre pil")
+            character1Pos.speedX = -1;
+        }
+        if(e.keyCode==38) {
+            console.log("Op pil")
+            if (jumpActive === false) {
+                jump(character1Pos);
+            }
+        }
+        if(e.keyCode==39) {
+            console.log("Højre pil")
+            character1Pos.speedX = 1;
+        }
+        if(e.keyCode==40) {
+            console.log("Ned pil")
+            if (coll === true) {
+                ned(character1Pos)
+            }
+        }
+    }
 
 
 
@@ -123,8 +126,9 @@ function setup() {
     background(153);
     rect(character1Pos.xPosTL, character1Pos.yPosTL, character1Pos.characterSizeX, character1Pos.characterSizeY);
     rect(100, 100, 300, 10);
-    frameRate(60)
-    let Spiller1 = new Spiller(200, 100, 50, 100, 0, 0) ;
+    frameRate(60);
+    let Spiller1 = new Spiller(300, 20, 50, 75, 0, 0);
+    Spiller1.tegn();
     //coll = false
     //onCooldown = false
     //jumpActive = false
@@ -135,17 +139,17 @@ function setup() {
 
 function draw() {
     //move(character1Pos)
-    Spiller1.move()
+    Spiller1.move();
     //collisionButtonY(character1Pos)
-    Spiller1.collisionButtonY()
+    Spiller1.collisionButtonY();
     background(153);
     //rect(character1Pos.xPosTL, character1Pos.yPosTL, character1Pos.characterSizeX, character1Pos.characterSizeY);
-    Spiller1.tegn()
+    Spiller1.tegn();
     rect(100, 100, 300, 10);
     //updateJump(character1Pos)
-    Spiller1.updateJump()
+    Spiller1.updateJump();
     //fall(character1Pos)
-    Spiller1.fall()
+    Spiller1.fall();
     document.onkeydown = controls;
 
 

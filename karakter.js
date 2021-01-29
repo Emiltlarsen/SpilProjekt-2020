@@ -14,7 +14,7 @@ class Spiller {
 
     tegn() {
         rect(this.x, this.y, this.width, this.heigth);
-        Fill(this.col);
+        fill(this.col);
     }
 
     jump() {
