@@ -5,6 +5,7 @@ let Spiller2 = new Spiller(100, 20, 50, 50, 0, 0, 0, 255, 0);
 var canvasW = 1600
 var canvasH = 740
 var side = 0
+let spilside;
 let bg;
 let set;
 
@@ -72,8 +73,9 @@ function controls(e) {
 
 
 function setup() {
+    spilside = loadImage('Spilside.png');
     bg = loadImage('StartsideP.png');
-    set = loadImage('SettingssideP2.png')
+    set = loadImage('SettingssideP2.png');
     createCanvas(canvasW, canvasH);
     rect(100, 100, 300, 10);
     fill(0, 0, 255)
@@ -119,7 +121,7 @@ function draw() {
 
     if (side === 1){
 
-        background(bg); //*Skal laves med platform
+        background(spilside); 
         fill(0, 0, 255)
         rect(100, 100, 300, 10);
 
