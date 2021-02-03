@@ -9,10 +9,13 @@ let bg;
 let set;
 
 
-function keyReleased() { //der er her palds til forbedringer i forhold til helt clean movement. 
-    if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW || keyCode === 68 || keyCode === 'd') {
+function keyReleased() { //der er her palds til forbedringer i forhold til helt clean movement. Mangler fiks til p2 - rækkefølge matters åbenbart 
+    if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
         Spiller1.speedX = 0;
     }
+    if (keyCode === KeyA || keyCode === 'd') {
+        Spiller2.speedX = 0;
+    } 
     return false
 }
 
