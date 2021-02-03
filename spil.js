@@ -25,13 +25,13 @@ function keyReleased() { //der er her palds til forbedringer i forhold til helt 
 }
 
 function tegn1() {
-    image(player1, this.x, this.y);
+    image(player1, Spiller1.x, Spiller1.y);
     //fill(this.col);
     //rect(this.x, this.y, this.width, this.heigth);
 }
 
 function tegn2() {
-    image(player2, this.x, this.y);
+    image(player2, Spiller2.x, Spiller2.y);
     //fill(this.col);
     //rect(this.x, this.y, this.width, this.heigth);
 }
