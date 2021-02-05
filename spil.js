@@ -14,7 +14,7 @@ function keyReleased() { //der er her palds til forbedringer i forhold til helt 
     if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
         Spiller1.speedX = 0;
     }
-    if (keyCode === KeyA || keyCode === 'd') {
+    if (keyCode === 65 || keyCode === 68) {
         Spiller2.speedX = 0;
     } 
     return false
