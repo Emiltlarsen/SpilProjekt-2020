@@ -107,6 +107,7 @@ function setup() {
 
 function draw() {
     background(bg);
+    timeElapsed++
 
     //Starts knap lys
     if (side === 0 && 625 < mouseX && mouseX < (625 + 348) && 428 < mouseY && mouseY < (428 + 98)){
