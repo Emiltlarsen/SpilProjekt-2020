@@ -1,6 +1,3 @@
-let player1 = 'Player1.png';
-let player2 = 'Player1.png';
-
 let Spiller1 = new Spiller(300, 20, 50, 0, 0);
 let Spiller2 = new Spiller(100, 20, 50, 0, 0);
 
@@ -94,7 +91,7 @@ function setup() {
     rect(100, 100, 300, 10);
     fill(0, 0, 255)
     frameRate(60);
-    player1 = loadImage('Player1.png');
+    player1 = loadImage('IdleP1.png'); //B36 H96
     player2 = loadImage('Player1.png');
 }
 
