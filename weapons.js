@@ -68,7 +68,7 @@ function spawner() {
     }
     function display() {
         for (let i = 0; i < weaponsOnMap.length; i++) {
-            
+            //Implementer billeder og visning af vågen
             
         }
 
