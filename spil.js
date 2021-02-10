@@ -12,18 +12,6 @@ let bg;
 let set;
 
 
-
-
-function keyReleased() { //der er her palds til forbedringer i forhold til helt clean movement. Mangler fiks til p2 - rækkefølge matters åbenbart 
-    if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
-        Spiller1.speedX = 0;
-    }
-    if (keyCode === KeyA || keyCode === 'd') {
-        Spiller2.speedX = 0;
-    } 
-    return false
-}
-
 function tegn1() {
     image(player1, Spiller1.x, Spiller1.y);
     //fill(this.col);
@@ -34,6 +22,17 @@ function tegn2() {
     image(player2, Spiller2.x, Spiller2.y);
     //fill(this.col);
     //rect(this.x, this.y, this.width, this.heigth);
+}
+
+
+function keyReleased() { //der er her palds til forbedringer i forhold til helt clean movement. Mangler fiks til p2 - rækkefølge matters åbenbart 
+    if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
+        Spiller1.speedX = 0;
+    }
+    if (keyCode === KeyA || keyCode === 'd') {
+        Spiller2.speedX = 0;
+    } 
+    return false
 }
 
 
@@ -95,29 +94,31 @@ function setup() {
     rect(100, 100, 300, 10);
     fill(0, 0, 255)
     frameRate(60);
+    player1 = loadImage('Player1.png');
+    player2 = loadImage('Player1.png');
 }
 
 
-    function mouseClicked(){
-        //Start game
-        if (side === 0 && 625 < mouseX && mouseX < 974 && 428 < mouseY && mouseY < 527){
-        console.log("Side 1")
+function mouseClicked(){
+    //Start game
+    if (side === 0 && 625 < mouseX && mouseX < 974 && 428 < mouseY && mouseY < 527){
+    console.log("Side 1")
         
-        side = 1;
-        }
-        //Startside til Settings
-        if (side === 0 && 625 < mouseX && mouseX < 974 && 550 < mouseY && mouseY < 653){
-        console.log("Side 2")
-        
-        side = 2;
-        }
-        //Settings til Startside
-        if (side === 2 && 8 < mouseX && mouseX < 128 && 8 < mouseY && mouseY < 59){
-        console.log("Side 0")
-        
-        side = 0;
-        }
+    side = 1;
     }
+    //Startside til Settings
+    if (side === 0 && 625 < mouseX && mouseX < 974 && 550 < mouseY && mouseY < 653){
+    console.log("Side 2")
+        
+    side = 2;
+    }
+    //Settings til Startside
+    if (side === 2 && 8 < mouseX && mouseX < 128 && 8 < mouseY && mouseY < 59){
+    console.log("Side 0")
+        
+    side = 0;
+    }
+}
 
 
 function draw() {
@@ -141,20 +142,19 @@ function draw() {
         rect(100, 100, 300, 10);
         //image(player2, 0, 0);
 
-        Spiller1.tegn();
+        //Spiller1.tegn();
         Spiller1.move();
         Spiller1.collisionButtonY();
         Spiller1.updateJump();
         Spiller1.fall();
         tegn1();
 
-        Spiller2.tegn();
+        //Spiller2.tegn();
         Spiller2.move();
         Spiller2.collisionButtonY();
         Spiller2.updateJump();
         Spiller2.fall();
         tegn2();
-
 
         document.onkeydown = controls;
     }
