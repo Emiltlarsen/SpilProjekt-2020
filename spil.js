@@ -24,49 +24,62 @@ function keyReleased() { //der er her palds til forbedringer i forhold til helt 
 
 function controls(e) {
     //alert(e.KeyCode);
-    //Spiller1
-        if(e.keyCode==37) {
+    //Spiller2
+        if(e.keyCode===37) {
             console.log("Venstre pil")
             Spiller1.speedX = -1
         }
-        if(e.keyCode==38) {
+        if(e.keyCode===38) {
             console.log("Op pil")
             if (Spiller1.jumpActive === false) {
                 Spiller1.jump();
             }
         }
-        if(e.keyCode==39) {
+        if(e.keyCode===39) {
             console.log("Højre pil")
             Spiller1.speedX = 1
         }
-        if(e.keyCode==40) {
+        if(e.keyCode===40) {
             console.log("Ned pil")
             if (Spiller1.collision === true) {
                 Spiller1.ned()
             }
         }
+        if(e.keyCode === 66 && onCooldown1 === false) {
+            var bullet = new ball(Spiller2.x + hand2, Spiller2.y+25, 20, 255, retning2)
+            bullets.push(bullet);
+            disableState1(3);
+        console.log("bumbum")
+        }
 
-    //Spiller2
-        if(e.keyCode==65) {
+    //Spiller1
+        if(e.keyCode===65) {
             console.log("A")
             Spiller2.speedX = -1
         }
-        if(e.keyCode==87) {
+        if(e.keyCode===87) {
             console.log("W")
             if (Spiller2.jumpActive === false) {
                 Spiller2.jump();
             }
         }
-        if(e.keyCode==68) {
+        if(e.keyCode===68) {
             console.log("D")
             Spiller2.speedX = 1
         }
-        if(e.keyCode==83) {
+        if(e.keyCode===83) {
             console.log("S")
             if (Spiller2.collision === true) {
                 Spiller2.ned()
             }
         }
+        if(e.keyCode === 76 && onCooldown === false) {
+            var patron = new ball(Spiller1.x + hand1, Spiller1.y+25, 20, 255, retning1)
+            bullets.push(patron);
+            disableState(3);
+        console.log("bang!")
+        }
+    
         
 }
 
@@ -136,8 +149,25 @@ function draw() {
         Spiller2.collisionButtonY();
         Spiller2.updateJump();
         Spiller2.fall();
+
         document.onkeydown = controls;
+     
+
+        for (let index = 0; index < bullets.length; index++) {
+        bullets[index].display();
+        bullets[index].move();
+        }  
+        if (onCooldown === true) {
+            console.log("TimerActive")
+            checkCooldown()
+        }
+        if (onCooldown1 === true) {
+            console.log("TimerActive")
+            checkCooldown1()
+        }
     }
+
+    
 
     //Tilbage knap lys
     if (side === 2 && 8 < mouseX && mouseX < 128 && 8 < mouseY && mouseY < 59){
@@ -147,4 +177,6 @@ function draw() {
     } else if (side === 2){
         background(set);
     }
+
+    
 }
