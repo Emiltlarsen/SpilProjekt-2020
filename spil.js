@@ -158,7 +158,7 @@ function draw() {
     
         background(set);
         slider = createSlider(0,1,0.5,0.1);
-        slider.position(600,350);
+        slider.position(600,320);
         slider.style('width','400px');
         val = slider.value();
         lyd.setVolume(val);
@@ -167,15 +167,19 @@ function draw() {
     } else if (side === 2) {
         val = slider.value();
         lyd.setVolume(val);
+        background(set);
+        stroke(color(14,177, 236));
+        strokeWeight(2);
+        textSize(24);
+        fill(255,255,255);
+        text(val * 100 + "%", 1017, 328);
+        text("Volume", 500, 328)
     }
 
 
     //Tilbage knap lys
     if (side === 2 && 8 < mouseX && mouseX < 128 && 8 < mouseY && mouseY < 59){
-        background(set);
         fill(0,0,0,63);
         rect(8,8,120,51);
-    } else if (side === 2){
-        background(set);
     }
 }
