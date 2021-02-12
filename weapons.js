@@ -30,7 +30,7 @@ class Weapon {
 
 var class1Weapon = new Weapon(5, 3, 0)
 var class2Weapon = new Weapon(10, 5, 1)
-var class2Weapon = new Weapon(10, 5, 1)
+var class2Weapon = new Weapon(10, 5, 2)
 
 
 function spawner() {
@@ -71,10 +71,7 @@ function spawner() {
             //Implementer billeder og visning af vågen
             
         }
-
-
     }
-    
     display()
 }
 
