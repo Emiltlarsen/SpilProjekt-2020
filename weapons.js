@@ -1,3 +1,27 @@
+class weaponSpawn {
+    constructor(x, y, weaponW, WeaponH){
+        this.x = x
+        this.y = y
+        this.weaponW = weaponW
+        this.WeaponH = WeaponH
+    }
+
+    hitboxConverter() {
+        topLeftX = this.x - 50
+        topLeftY = this.y - 50
+        topRightX = this.x + 50
+        topLeftY = this.y - 50
+        topLeftX = this.x -50
+        topLeftY = this.y -50
+    }
+
+//FIKS OVENOVER^^
+}
+
+
+
+
+
 var location1 = {x:1, y:2}
 var location2 = {x:1, y:2}
 var location3 = {x:1, y:2}
