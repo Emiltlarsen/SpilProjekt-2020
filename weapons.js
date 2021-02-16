@@ -1,24 +1,23 @@
+var hitboxSize = 50
+
 class weaponSpawn {
-    constructor(x, y, weaponW, WeaponH){
+    constructor(x, y, weapon){
         this.x = x
         this.y = y
-        this.weaponW = weaponW
-        this.WeaponH = WeaponH
+        this.weapon = weapon
     }
 
     hitboxConverter() {
-        topLeftX = this.x - 50
-        topLeftY = this.y - 50
-        topRightX = this.x + 50
-        topLeftY = this.y - 50
-        topLeftX = this.x -50
-        topLeftY = this.y -50
+        topLeftX = this.x - hitboxSize
+        topLeftY = this.y - hitboxSize
+        topRightX = this.x + hitboxSize + weaponW
+        topRightY = this.y - hitboxSize
+        BotLeftX = this.x - hitboxSize
+        BotLeftY = this.y + weaponH
+        BotRightX = this.x + hitboxSize + weaponW
+        BotRightY = this.y + weaponH
     }
-
-//FIKS OVENOVER^^
 }
-
-
 
 
 
@@ -44,7 +43,7 @@ function minutterToFPS(minutter) {
 
 
 class Weapon {
-    constructor(firerate, damage, level){
+    constructor(firerate, damage, level, weaponH){
         this.firerate = firerate
         this.damage = damage
         this.level = level
@@ -60,6 +59,7 @@ var class2Weapon = new Weapon(10, 5, 2)
 function spawner() {
     if(numberOfWeapons = maxNumberOfWeaponsOnMap){
         weaponsOnMap.shift()
+
 
     } else if(timeElapsed % intervalPerSpawn === 0) {
 
