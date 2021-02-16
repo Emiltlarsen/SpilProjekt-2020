@@ -8,17 +8,15 @@ var side = 0;
 let bg;
 let set;
 
+timeElapsed
 
 function tegn1() {
-    image(player1, Spiller1.x, Spiller1.y);
-    //fill(this.col);
-    //rect(this.x, this.y, this.width, this.heigth);
+    image(player1Ani1, Spiller1.x, Spiller1.y);
 }
 
 function tegn2() {
     image(player2, Spiller2.x, Spiller2.y);
-    //fill(this.col);
-    //rect(this.x, this.y, this.width, this.heigth);
+
 }
 
 
@@ -91,8 +89,8 @@ function setup() {
     rect(100, 100, 300, 10);
     fill(0, 0, 255)
     frameRate(60);
-    player1 = loadImage('IdleP1.png'); //B72 H192
-    player2 = loadImage('Player1.png');
+    player1Ani1 = loadImage('IdleP1.png'); //B72 H192
+    player1Ani2 = loadImage('Player1.png');
 }
 
 
