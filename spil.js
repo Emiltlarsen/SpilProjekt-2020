@@ -91,7 +91,7 @@ function setup() {
     rect(100, 100, 300, 10);
     fill(0, 0, 255)
     frameRate(60);
-    player1 = loadImage('IdleP1.png'); //B36 H96
+    player1 = loadImage('IdleP1.png'); //B72 H192
     player2 = loadImage('Player1.png');
 }
 
