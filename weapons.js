@@ -4,40 +4,43 @@ var location3 = {x:1, y:2}
 var location4 = {x:1, y:2}
 var location5 = {x:1, y:2}
 
-var intervalPerSpawn = 15 //sekunder
-var timeElapsed = 0
-var weaponsOnMap = []
-var maxNumberOfWeaponsOnMap = 4
-var numberOfWeapons = 0
+var intervalPerSpawn = 15; //sekunder
+var timeElapsed = 0;
+var weaponsOnMap = [];
+var maxNumberOfWeaponsOnMap = 4;
+var numberOfWeapons = 0;
 
-var phase1 = 0 //minutter
-var phase2 = 2 //minutter
-var phase3 = 5 //minutter
-var hitboxSize = 50
-
+var phase1 = 0; //minutter
+var phase2 = 2; //minutter
+var phase3 = 5; //minutter
+var hitboxSize = 50;
 
 class Weapon {
     constructor(firerate, damage, level, ammo, weaponW, weaponH){
-        this.firerate = firerate
-        this.damage = damage
-        this.level = level
-        this.ammo = ammo
-        this.weaponW = weaponW
-        this.weaponH = weaponH
+        this.firerate = firerate;
+        this.damage = damage;
+        this.level = level;
+        this.ammo = ammo;
+        this.weaponW = weaponW;
+        this.weaponH = weaponH;
     }
 }
 
 
-var class1Weapon = new Weapon(5, 5, 1, 12, 20, 17)
-var class2Weapon = new Weapon(10, 3, 2, 30, 32, 29)
-var class3Weapon = new Weapon(1, 25, 3, 5, 64, 29)
+var class0Weapon = new Weapon(0, 0, 0, 0, 0, 0); //uneguiped
+var class1Weapon = new Weapon(5, 5, 1, 12, 20, 17); //pistol
+var class2Weapon = new Weapon(10, 3, 2, 30, 32, 29); //uzi
+var class3Weapon = new Weapon(1, 25, 3, 5, 64, 29); //sniper
+
+var weaponEguipedP1 = class0Weapon;
+var weaponEguipedP2 = class0Weapon;
 
 
 class weaponSpawn {
     constructor(x, y, weapon){
-        this.x = x
-        this.y = y
-        this.weapon = weapon
+        this.x = x;
+        this.y = y;
+        this.weapon = weapon;
     }
 
     hitboxConverter() {
@@ -109,8 +112,4 @@ function spawner() {
         }
     }
     display()
-}
-
-function tegn2() {
-    image(player2, Spiller2.x, Spiller2.y);
 }
