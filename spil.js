@@ -41,10 +41,10 @@ function tegn2() {
 }
 
 function keyReleased() { //der er her palds til forbedringer i forhold til helt clean movement. Mangler fiks til p2 - rækkefølge matters åbenbart 
-    if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
+    if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) { //Spiller1
         Spiller1.speedX = 0;
     }
-    if (keyCode === 65 || keyCode === 68) {
+    if (keyCode === 65 || keyCode === 68) { //Spiller2
         Spiller2.speedX = 0;
     } 
     return false
@@ -151,6 +151,7 @@ function draw() {
     if (side === 1){
         timeElapsed++
 
+        timeElapsed++
         background(spilside); 
         fill(0, 0, 255)
         rect(100, 100, 300, 10);
