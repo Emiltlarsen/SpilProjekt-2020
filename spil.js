@@ -1,4 +1,4 @@
-let Spiller1 = new Spiller(300, 20, 96, 28, 0, 0, 4, class2Weapon);
+let Spiller1 = new Spiller(300, 20, 96, 28, 0, 0, 4, class1Weapon);
 let Spiller2 = new Spiller(100, 20, 96, 28, 0, 0, 4, class3Weapon);
 
 var canvasW = 1600
@@ -34,7 +34,7 @@ function keyReleased() { //der er her palds til forbedringer i forhold til helt 
 
 function controls(e) {
     //alert(e.KeyCode);
-    //Spiller2
+    //Spiller1
         if(e.keyCode===37) {
             console.log("Venstre pil")
             Spiller1.speedX = -Spiller1.speed
@@ -55,14 +55,22 @@ function controls(e) {
                 Spiller1.ned()
             }
         }
-        if(e.keyCode === 66 && onCooldown1 === false) {
-            var bullet = new ball(Spiller2.x + hand2, Spiller2.y+25, 20, 255, retning2)
-            bullets.push(bullet);
-            disableState1(3);
-        console.log("bumbum")
+        if(e.keyCode === 76 && onCooldown === false) {
+            if(Spiller1.weaponEquiped === class1Weapon){
+            var patron = new ball(Spiller1.x + hand1, Spiller1.y+55, 10, 255, retning1)
+        } else if(Spiller1.weaponEquiped === class2Weapon){
+            var patron = new ball(Spiller1.x + hand1, Spiller1.y+45, 10, 255, retning1)
+        } else if(Spiller1.weaponEquiped === class3Weapon){
+            var patron = new ball(Spiller1.x + hand1, Spiller1.y+30, 20, 255, retning1)
+
         }
 
-    //Spiller1
+            bullets.push(patron);
+            disableState(Spiller1.weaponEquiped.firerate);
+        console.log("bang!")
+        }
+    
+    //Spiller2
         if(e.keyCode===65) {
             console.log("A")
             Spiller2.speedX = -Spiller2.speed
@@ -83,13 +91,22 @@ function controls(e) {
                 Spiller2.ned()
             }
         }
-        if(e.keyCode === 76 && onCooldown === false) {
-            var patron = new ball(Spiller1.x + hand1, Spiller1.y+25, 20, 255, retning1)
-            bullets.push(patron);
-            disableState(3);
-        console.log("bang!")
+        
+        if(e.keyCode === 66 && onCooldown1 === false) {
+            if(Spiller2.weaponEquiped === class1Weapon){
+            var bullet = new ball(Spiller2.x + hand2, Spiller2.y+55, 10, 255, retning2)
+            }
+            if(Spiller2.weaponEquiped === class2Weapon){
+            var bullet = new ball(Spiller2.x + hand2, Spiller2.y+45, 10, 255, retning2)
+            }
+            if(Spiller2.weaponEquiped === class3Weapon){
+            var bullet = new ball(Spiller2.x + hand2, Spiller2.y+30, 10, 255, retning2)
+            }
+
+            bullets.push(bullet);
+            disableState1(Spiller2.weaponEquiped.firerate);
+        console.log("bumbum")
         }
-    
         
 }
 

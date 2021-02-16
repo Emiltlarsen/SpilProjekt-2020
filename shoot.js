@@ -41,9 +41,9 @@ function keyPressed(){
         retning2 = -4;
     }
 
-    if (keyCode === 37){
+    if (keyCode === 39){
         hand1 = 50;
-    } else if (keyCode === 39){
+    } else if (keyCode === 37){
         hand1 = 0;
     }
 

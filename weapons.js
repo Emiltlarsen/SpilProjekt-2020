@@ -27,9 +27,9 @@ class Weapon {
 
 
 var class0Weapon = new Weapon(0, 0, 0, 0, 0, 0); //uneguiped
-var class1Weapon = new Weapon(5, 5, 1, 12, 20, 17); //pistol
-var class2Weapon = new Weapon(10, 3, 2, 30, 32, 29); //uzi
-var class3Weapon = new Weapon(1, 25, 3, 5, 64, 29); //sniper
+var class1Weapon = new Weapon(1, 5, 1, 12, 20, 17); //pistol
+var class2Weapon = new Weapon(0.5, 3, 2, 30, 32, 29); //uzi
+var class3Weapon = new Weapon(3, 25, 3, 5, 64, 29); //sniper
 
 
 
