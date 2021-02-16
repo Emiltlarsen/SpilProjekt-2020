@@ -151,7 +151,6 @@ function draw() {
     if (side === 1){
         timeElapsed++
 
-        timeElapsed++
         background(spilside); 
         fill(0, 0, 255)
         rect(100, 100, 300, 10);
