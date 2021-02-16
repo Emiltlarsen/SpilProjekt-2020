@@ -1,20 +1,12 @@
 class Spiller {
-    constructor(x, y, width, heigth, speedX, speedY, colR, colG, colB) {
+    constructor(x, y, heigth, speedX, speedY) {
         this.x = x;
         this.y = y;
-        this.width = width;
         this.heigth = heigth;
         this.speedX = speedX;
         this.speedY = speedY;
         this.collision = false;
         this.jumpActive = false;
-        this.col = [colR, colG, colB];
-    }
-
-
-    tegn() {
-        fill(this.col);
-        rect(this.x, this.y, this.width, this.heigth);
     }
 
     jump() {
@@ -58,15 +50,7 @@ class Spiller {
             this.y + 50 === 99
             ) {
                 this.collision = true
-                console.log("collision med platform")
         } else
         this.collision = false
     }
-/*
-    keyReleased() { //der er her palds til forbedringer i forhold til helt clean movement. 
-        if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
-            this.speedX = 0;
-        }
-        return false
-    }*/
 }
