@@ -1,35 +1,52 @@
 let Spiller1 = new Spiller(300, 20, 50, 0, 0);
 let Spiller2 = new Spiller(100, 20, 50, 0, 0);
 
-
 var canvasW = 1600;
 var canvasH = 740;
 var side = 0;
 let bg;
 let set;
 
-timeElapsed
+var timeElapsed = 0;
+
+var intervalPerAni = 60;
+var aniState = 1;
+
+function aniSwitcher(input) {
+    if(timeElapsed % intervalPerAni === 0 && input === 1) {
+        aniState = 2
+    } else if (timeElapsed % intervalPerAni === 0 && input === 2) {
+        aniState = 1
+    }
+}
 
 function tegn1() {
-    image(player1Ani1, Spiller1.x, Spiller1.y);
+    if(aniState === 1) {
+        image(player1Ani1, Spiller1.x, Spiller1.y);
+    }
+    else {
+        image(player1Ani2, Spiller1.x, Spiller1.y);
+    }
 }
 
 function tegn2() {
-    image(player2, Spiller2.x, Spiller2.y);
-
+    if(aniState === 1) {
+        image(player1Ani1, Spiller2.x, Spiller2.y);
+    }
+    else {
+        image(player1Ani2, Spiller2.x, Spiller2.y);
+    }
 }
-
 
 function keyReleased() { //der er her palds til forbedringer i forhold til helt clean movement. Mangler fiks til p2 - rækkefølge matters åbenbart 
     if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
         Spiller1.speedX = 0;
     }
-    if (keyCode === KeyA || keyCode === 'd') {
+    if (keyCode === 65 || keyCode === 68) {
         Spiller2.speedX = 0;
     } 
     return false
 }
-
 
 function controls(e) {
     //alert(e.KeyCode);
@@ -83,14 +100,12 @@ function controls(e) {
 function setup() {
     bg = loadImage('StartsideP.png');
     set = loadImage('SettingssideP2.png')
-    //player1 = loadImage('Player1.png')
-    //player2 = loadImage('Player2.png')
+    player1Ani1 = loadImage('IdleP1.png'); //B72 H192
+    player1Ani2 = loadImage('Player1.png');
     createCanvas(canvasW, canvasH);
     rect(100, 100, 300, 10);
     fill(0, 0, 255)
     frameRate(60);
-    player1Ani1 = loadImage('IdleP1.png'); //B72 H192
-    player1Ani2 = loadImage('Player1.png');
 }
 
 
@@ -131,11 +146,13 @@ function draw() {
     } 
 
     if (side === 1){
+        timeElapsed++
 
         background(bg); //*Skal laves med platform
         fill(0, 0, 255)
         rect(100, 100, 300, 10);
-        //image(player2, 0, 0);
+
+        aniSwitcher(aniState);
 
         //Spiller1.tegn();
         Spiller1.move();

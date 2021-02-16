@@ -50,15 +50,7 @@ class Spiller {
             this.y + 50 === 99
             ) {
                 this.collision = true
-                console.log("collision med platform")
         } else
         this.collision = false
-    }
-
-    keyReleased() { //der er her palds til forbedringer i forhold til helt clean movement. 
-        if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
-            this.speedX = 0;
-        }
-        return false
     }
 }
