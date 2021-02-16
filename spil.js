@@ -157,7 +157,7 @@ function draw() {
     if (side === 2 && sliderActive === false){
     
         background(set);
-        slider = createSlider(0,1,0.5,0.1);
+        slider = createSlider(0,1,0.5,0.01);
         slider.position(600,320);
         slider.style('width','400px');
         val = slider.value();
@@ -172,7 +172,7 @@ function draw() {
         strokeWeight(2);
         textSize(24);
         fill(255,255,255);
-        text(val * 100 + "%", 1017, 328);
+        text(round(val * 100) + "%", 1017, 328);
         text("Volume", 500, 328)
     }
 
