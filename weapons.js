@@ -1,26 +1,3 @@
-var hitboxSize = 50
-
-class weaponSpawn {
-    constructor(x, y, weapon){
-        this.x = x
-        this.y = y
-        this.weapon = weapon
-    }
-
-    hitboxConverter() {
-        topLeftX = this.x - hitboxSize
-        topLeftY = this.y - hitboxSize
-        topRightX = this.x + hitboxSize + weaponW
-        topRightY = this.y - hitboxSize
-        BotLeftX = this.x - hitboxSize
-        BotLeftY = this.y + weaponH
-        BotRightX = this.x + hitboxSize + weaponW
-        BotRightY = this.y + weaponH
-    }
-}
-
-
-
 var location1 = {x:1, y:2}
 var location2 = {x:1, y:2}
 var location3 = {x:1, y:2}
@@ -36,66 +13,104 @@ var numberOfWeapons = 0
 var phase1 = 0 //minutter
 var phase2 = 2 //minutter
 var phase3 = 5 //minutter
+var hitboxSize = 50
+
+
+class Weapon {
+    constructor(firerate, damage, level, ammo, weaponW, weaponH){
+        this.firerate = firerate
+        this.damage = damage
+        this.level = level
+        this.ammo = ammo
+        this.weaponW = weaponW
+        this.weaponH = weaponH
+    }
+}
+
+
+var class1Weapon = new Weapon(5, 5, 1, 12, 20, 17)
+var class2Weapon = new Weapon(10, 3, 2, 30, 32, 29)
+var class3Weapon = new Weapon(1, 25, 3, 5, 64, 29)
+
+
+class weaponSpawn {
+    constructor(x, y, weapon){
+        this.x = x
+        this.y = y
+        this.weapon = weapon
+    }
+
+    hitboxConverter() {
+        topLeftX = this.x - hitboxSize
+        topLeftY = this.y - hitboxSize
+        topRightX = this.x + hitboxSize + weapon.weaponW
+        topRightY = this.y - hitboxSize
+        BotLeftX = this.x - hitboxSize
+        BotLeftY = this.y + weapon.weaponH
+        BotRightX = this.x + hitboxSize + weapon.weaponW
+        BotRightY = this.y + weapon.weaponH
+    }
+}
+
+
 
 function minutterToFPS(minutter) {
     return minutter * 60 * 60
 }
 
+function valgAfVåben() {
+    var spawnNumber = Math.random() * 10 // 0 til 10
 
-class Weapon {
-    constructor(firerate, damage, level, weaponH){
-        this.firerate = firerate
-        this.damage = damage
-        this.level = level
+    if(timeElapsed < minutterToFPS(phase2)){ //phase 1
+        if(0 < spawnNumber < 4){
+            return class1Weapon;
+        } else if(4 <= spawnNumber < 9) {
+            return class2Weapon;
+        } else 
+            return class3Weapon;
+
+    } else if(timeElapsed < minutterToFPS(phase3)){ //phase 2
+        if(0 < spawnNumber < 3){
+            return class1Weapon;
+        } else if(3 <= spawnNumber < 8) {
+            return class2Weapon;
+        } else
+            return class3Weapon;
+
+    } else if(timeElapsed >= minutterToFPS(phase3)){ //phase 3
+        if(0 < spawnNumber < 2){
+            return class1Weapon;
+        } else if(2 <= spawnNumber < 5) {
+            return class2Weapon;
+        } else
+            return class3Weapon; 
     }
 }
 
+function randomLocation() {
+    var spawnLocNumber = Math.ceil(Math.random() * 5) // 1 til 5
+    
 
-var class1Weapon = new Weapon(5, 3, 0)
-var class2Weapon = new Weapon(10, 5, 1)
-var class2Weapon = new Weapon(10, 5, 2)
+}
 
 
 function spawner() {
-    if(numberOfWeapons = maxNumberOfWeaponsOnMap){
-        weaponsOnMap.shift()
-
+    if(timeElapsed % intervalPerSpawn === 0 && numberOfWeapons === maxNumberOfWeaponsOnMap){
+        weaponsOnMap.shift();
+        weaponsOnMap.push(valgAfVåben());
 
     } else if(timeElapsed % intervalPerSpawn === 0) {
-
-        var spawnNumber = Math.random() * 10
-
-        if(timeElapsed < minutterToFPS(phase2)){ //phase 1
-            if(0 < spawnNumber < 4){
-                weaponsOnMap.push(class1Weapon);
-            } else if(4 <= spawnNumber < 9) {
-                weaponsOnMap.push(class2Weapon);
-            } else 
-                weaponsOnMap.push(class3Weapon);
-
-        } else if(timeElapsed < minutterToFPS(phase3)){ //phase 2
-            if(0 < spawnNumber < 3){
-                weaponsOnMap.push(class1Weapon);
-            } else if(3 <= spawnNumber < 8) {
-                weaponsOnMap.push(class2Weapon);
-            } else
-                weaponsOnMap.push(class3Weapon);
-
-        } else if(timeElapsed >= minutterToFPS(phase3)){ //phase 3
-            if(0 < spawnNumber < 2){
-                weaponsOnMap.push(class1Weapon);
-            } else if(2 <= spawnNumber < 5) {
-                weaponsOnMap.push(class2Weapon);
-            } else
-                weaponsOnMap.push(class3Weapon); 
-        }
+        weaponsOnMap.push(valgAfVåben());
+        
     }
     function display() {
         for (let i = 0; i < weaponsOnMap.length; i++) {
-            //Implementer billeder og visning af vågen
-            
+            image()            
         }
     }
     display()
 }
 
+function tegn2() {
+    image(player2, Spiller2.x, Spiller2.y);
+}

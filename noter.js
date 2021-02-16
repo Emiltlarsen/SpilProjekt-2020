@@ -28,3 +28,9 @@
             console.log("123_____________")
         }
     }
+
+
+    
+function tegn2() {
+    image(player2, Spiller2.x, Spiller2.y);
+}
