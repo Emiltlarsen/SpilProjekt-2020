@@ -1,7 +1,6 @@
 let Spiller1 = new Spiller(300, 20, 50, 0, 0);
 let Spiller2 = new Spiller(100, 20, 50, 0, 0);
 
-
 var canvasW = 1600
 var canvasH = 740
 var side = 0
@@ -11,13 +10,14 @@ let set;
 
 var timeElapsed = 0;
 
-var intervalPerAni = 60;
 var aniState = 1;
 
-function aniSwitcher(input) {
-    if(timeElapsed % intervalPerAni === 0 && input === 1) {
+function aniSwitcher() {
+    var intervalPerAni = 25;
+
+    if(timeElapsed % intervalPerAni === 0 && aniState === 1) {
         aniState = 2
-    } else if (timeElapsed % intervalPerAni === 0 && input === 2) {
+    } else if (timeElapsed % intervalPerAni === 0 && aniState === 2) {
         aniState = 1
     }
 }
@@ -155,7 +155,7 @@ function draw() {
         fill(0, 0, 255)
         rect(100, 100, 300, 10);
 
-        aniSwitcher(aniState);
+        aniSwitcher();
 
         //Spiller1.tegn();
         Spiller1.move();
