@@ -1,9 +1,9 @@
-let Spiller1 = new Spiller(300, 20, 50, 0, 0);
-let Spiller2 = new Spiller(100, 20, 50, 0, 0);
+let Spiller1 = new Spiller(300, 20, 96, 28, 0, 0, 4, class2Weapon);
+let Spiller2 = new Spiller(100, 20, 96, 28, 0, 0, 4, class3Weapon);
 
 var canvasW = 1600
 var canvasH = 740
-var side = 0
+var side = 1
 let spilside;
 let bg;
 let set;
@@ -22,24 +22,6 @@ function aniSwitcher() {
     }
 }
 
-function tegn1() {
-    if(aniState === 1) {
-        image(player1Ani1, Spiller1.x, Spiller1.y);
-    }
-    else {
-        image(player1Ani2, Spiller1.x, Spiller1.y);
-    }
-}
-
-function tegn2() {
-    if(aniState === 1) {
-        image(player1Ani1, Spiller2.x, Spiller2.y);
-    }
-    else {
-        image(player1Ani2, Spiller2.x, Spiller2.y);
-    }
-}
-
 function keyReleased() { //der er her palds til forbedringer i forhold til helt clean movement. Mangler fiks til p2 - rækkefølge matters åbenbart 
     if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) { //Spiller1
         Spiller1.speedX = 0;
@@ -55,7 +37,7 @@ function controls(e) {
     //Spiller1
         if(e.keyCode==37) {
             console.log("Venstre pil")
-            Spiller1.speedX = -1
+            Spiller1.speedX = -Spiller1.speed
         }
         if(e.keyCode==38) {
             console.log("Op pil")
@@ -65,7 +47,7 @@ function controls(e) {
         }
         if(e.keyCode==39) {
             console.log("Højre pil")
-            Spiller1.speedX = 1
+            Spiller1.speedX = Spiller1.speed
         }
         if(e.keyCode==40) {
             console.log("Ned pil")
@@ -77,7 +59,7 @@ function controls(e) {
     //Spiller2
         if(e.keyCode==65) {
             console.log("A")
-            Spiller2.speedX = -1
+            Spiller2.speedX = -Spiller2.speed
         }
         if(e.keyCode==87) {
             console.log("W")
@@ -87,7 +69,7 @@ function controls(e) {
         }
         if(e.keyCode==68) {
             console.log("D")
-            Spiller2.speedX = 1
+            Spiller2.speedX = Spiller2.speed
         }
         if(e.keyCode==83) {
             console.log("S")
@@ -95,7 +77,6 @@ function controls(e) {
                 Spiller2.ned()
             }
         }
-        
 }
 
 
@@ -105,9 +86,13 @@ function setup() {
     set = loadImage('SettingssideP2.png')
     player1Ani1 = loadImage('IdleP1.png'); //B72 H192
     player1Ani2 = loadImage('Player1.png');
+    player2Ani1 = loadImage('IdleP1.png'); //B72 H192
+    player2Ani2 = loadImage('Player1.png');
+    pistolIMG = loadImage('pistol.png');
+    uziIMG = loadImage('uzi.png');
+    sniperIMG = loadImage('sniper.png');
+    
     createCanvas(canvasW, canvasH);
-    rect(100, 100, 300, 10);
-    fill(0, 0, 255)
     frameRate(60);
 }
 
@@ -118,6 +103,7 @@ function mouseClicked(){
     console.log("Side 1")
         
     side = 1;
+    timeElapsed = 0;
     }
     //Startside til Settings
     if (side === 0 && 625 < mouseX && mouseX < 974 && 550 < mouseY && mouseY < 653){
@@ -153,7 +139,21 @@ function draw() {
 
         background(spilside); 
         fill(0, 0, 255)
-        rect(100, 100, 300, 10);
+        rect(100, 100, 300, 10); //øverst til venstre
+        rect(1200, 100, 300, 10); //øverst til højre
+
+        rect(500, 250, 100, 10); //anden række ventre
+        rect(1000, 250, 100, 10); //anden række højre
+
+        rect(650, 400, 300, 10); //tredje række midten
+
+        rect(450, 550, 300, 10); //fjerde række venstre
+        rect(850, 550, 300, 10); //fjerde række højre
+
+        rect(300, 700, 1000, 10);
+
+
+
 
         aniSwitcher();
 
@@ -162,14 +162,16 @@ function draw() {
         Spiller1.collisionButtonY();
         Spiller1.updateJump();
         Spiller1.fall();
-        tegn1();
+        Spiller1.tegn();
+        Spiller1.tegnWeapon();
 
         //Spiller2.tegn();
         Spiller2.move();
         Spiller2.collisionButtonY();
         Spiller2.updateJump();
         Spiller2.fall();
-        tegn2();
+        Spiller2.tegn();
+        Spiller2.tegnWeapon();
 
         document.onkeydown = controls;
     }

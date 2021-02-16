@@ -5,7 +5,6 @@ var location4 = {x:1, y:2}
 var location5 = {x:1, y:2}
 
 var intervalPerSpawn = 15; //sekunder
-var timeElapsed = 0;
 var weaponsOnMap = [];
 var maxNumberOfWeaponsOnMap = 4;
 var numberOfWeapons = 0;
@@ -32,8 +31,6 @@ var class1Weapon = new Weapon(5, 5, 1, 12, 20, 17); //pistol
 var class2Weapon = new Weapon(10, 3, 2, 30, 32, 29); //uzi
 var class3Weapon = new Weapon(1, 25, 3, 5, 64, 29); //sniper
 
-var weaponEguipedP1 = class0Weapon;
-var weaponEguipedP2 = class0Weapon;
 
 
 class weaponSpawn {
