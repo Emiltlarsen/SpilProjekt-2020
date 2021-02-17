@@ -1,12 +1,24 @@
+//side 0 = Startside
+//side 1 = Spil
+//side 2 = Settings
+
 let Spiller1 = new Spiller(300, 20, 96, 28, 0, 0, 4, class1Weapon);
 let Spiller2 = new Spiller(100, 20, 96, 28, 0, 0, 4, class2Weapon);
+
 
 var canvasW = 1600
 var canvasH = 740
 var side = 0
-let spilside;
-let bg;
-let set;
+var sliderActive = false;   //Fiks af dublication
+let spilside;   //Spil baggrunds billede
+let bg;         //Menu baggrunds billede
+let set;        //Settings billede
+let lyd;        //Lyd
+let val;
+
+function preload() {
+    lyd = loadSound('sang.mp3');
+}
 
 var timeElapsed = 0;
 
@@ -149,8 +161,8 @@ function setup() {
 }
 
 
-function mouseClicked(){
-    //Start game
+    function mouseClicked(){
+      //Start game
     if (side === 0 && 625 < mouseX && mouseX < 974 && 428 < mouseY && mouseY < 527){
     console.log("Side 1")
         
@@ -165,15 +177,16 @@ function mouseClicked(){
     }
     //Settings til Startside
     if (side === 2 && 8 < mouseX && mouseX < 128 && 8 < mouseY && mouseY < 59){
-    console.log("Side 0")
-        
-    side = 0;
+      console.log("Side 0")
+      removeElements();
+      lyd.stop();
+      sliderActive = false;
+      side = 0;
     }
 }
 
 var ramt1 = false;
 var ramt2 = false;
-
 
 function draw() {
     background(bg);
@@ -184,9 +197,9 @@ function draw() {
         rect(625,428,349,100);
     } 
     //Settings knap lys
-    if (side === 0 && 625 < mouseX && mouseX < (625 + 349) && 542 < mouseY && mouseY < 642){
+    if (side === 0 && 625 < mouseX && mouseX < (625 + 349) && 549 < mouseY && mouseY < (549 + 104)){
         fill(0,0,0,63);
-        rect(625,542,349,100);
+        rect(625,549,349,104);
     } 
 
     if (side === 1){
@@ -265,27 +278,51 @@ function draw() {
         strokeWeight(2);
         textSize(24);
 
-        if(Spiller1.x >= canvasH + 100){
+        if(Spiller1.y >= canvasH + 100){
             text("Spiller 2 vinder!", canvasW/2, canvasH/2)
-        } else if(Spiller2.x >= canvasH + 100){
+            if (Spiller1.y >= canvasH + 300){
+                location.reload()
+            }
+
+        } else if(Spiller2.y >= canvasH + 100){
             text("Spiller 1 vinder!", canvasW/2, canvasH/2)
+            if (Spiller2.y >= canvasH + 300){
+                location.reload()
+            }
             
         }
         
     }
     
 
-
+    if (side === 2 && sliderActive === false){
+    
+        background(set);
+        slider = createSlider(0,1,0.5,0.01);
+        slider.position(600,320);
+        slider.style('width','400px');
+        val = slider.value();
+        lyd.setVolume(val);
+        lyd.play();
+        //lyd.loop();
+        sliderActive = true;
+    } else if (side === 2) {
+        val = slider.value();
+        lyd.setVolume(val);
+        background(set);
+        stroke(color(14,177, 236));
+        strokeWeight(2);
+        textSize(24);
+        fill(255,255,255);
+        text(round(val * 100) + "%", 1017, 328);
+        text("Volume", 500, 328)
+    }
 
 
     //Tilbage knap lys
     if (side === 2 && 8 < mouseX && mouseX < 128 && 8 < mouseY && mouseY < 59){
-        background(set);
         fill(0,0,0,63);
         rect(8,8,120,51);
-    } else if (side === 2){
-        background(set);
     }
-
-    
+        
 }

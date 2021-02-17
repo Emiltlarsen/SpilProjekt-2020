@@ -1,5 +1,5 @@
 class Spiller {
-    constructor(x, y, heigth, width, speedX, speedY, speed, weaponEquiped, img1, img2) {
+    constructor(x, y, heigth, width, speedX, speedY, speed, weaponEquiped) {
         this.x = x;
         this.y = y;
         this.heigth = heigth;
@@ -8,8 +8,6 @@ class Spiller {
         this.speedY = speedY;
         this.speed = speed;
         this.weaponEquiped = weaponEquiped;
-        this.img1 = img1
-        this.img2 = img2
         this.collision = false;
         this.jumpActive = false;
     }
