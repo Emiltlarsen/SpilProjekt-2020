@@ -1,19 +1,3 @@
-var location1 = {x:1, y:2}
-var location2 = {x:1, y:2}
-var location3 = {x:1, y:2}
-var location4 = {x:1, y:2}
-var location5 = {x:1, y:2}
-
-var intervalPerSpawn = 15; //sekunder
-var weaponsOnMap = [];
-var maxNumberOfWeaponsOnMap = 4;
-var numberOfWeapons = 0;
-
-var phase1 = 0; //minutter
-var phase2 = 2; //minutter
-var phase3 = 5; //minutter
-var hitboxSize = 50;
-
 class Weapon {
     constructor(firerate, damage, level, ammo, weaponW, weaponH){
         this.firerate = firerate;
@@ -31,6 +15,26 @@ var class1Weapon = new Weapon(5, 5, 1, 12, 20, 17); //pistol
 var class2Weapon = new Weapon(10, 3, 2, 30, 32, 29); //uzi
 var class3Weapon = new Weapon(1, 25, 3, 5, 64, 29); //sniper
 
+/*
+var location1 = {x:1, y:2}
+var location2 = {x:1, y:2}
+var location3 = {x:1, y:2}
+var location4 = {x:1, y:2}
+var location5 = {x:1, y:2}
+
+var intervalPerSpawn = 15; //sekunder
+var weaponsOnMap = [];
+var maxNumberOfWeaponsOnMap = 4;
+var numberOfWeapons = 0;
+*/
+
+
+
+/*
+var phase1 = 0; //minutter
+var phase2 = 2; //minutter
+var phase3 = 5; //minutter
+var hitboxSize = 50;
 
 
 class weaponSpawn {
@@ -110,3 +114,4 @@ function spawner() {
     }
     display()
 }
+*/

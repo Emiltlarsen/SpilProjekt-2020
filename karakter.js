@@ -7,9 +7,9 @@ class Spiller {
         this.speedX = speedX;
         this.speedY = speedY;
         this.speed = speed;
+        this.weaponEquiped = weaponEquiped;
         this.collision = false;
         this.jumpActive = false;
-        this.weaponEquiped = weaponEquiped;
     }
 
     tegn() {
