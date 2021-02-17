@@ -3,7 +3,7 @@ let Spiller2 = new Spiller(100, 20, 96, 28, 0, 0, 4, class2Weapon);
 
 var canvasW = 1600
 var canvasH = 740
-var side = 1
+var side = 0
 let spilside;
 let bg;
 let set;
