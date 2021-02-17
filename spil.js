@@ -2,8 +2,8 @@
 //side 1 = Spil
 //side 2 = Settings
 
-let Spiller1 = new Spiller(300, 20, 96, 28, 0, 0, 4, class1Weapon);
-let Spiller2 = new Spiller(100, 20, 96, 28, 0, 0, 4, class2Weapon);
+let Spiller1 = new Spiller(1450, 0, 96, 28, 0, 0, 4, class1Weapon);
+let Spiller2 = new Spiller(100, 0, 96, 28, 0, 0, 4, class2Weapon);
 
 
 var canvasW = 1600
