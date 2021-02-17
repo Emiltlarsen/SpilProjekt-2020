@@ -23,22 +23,22 @@ class ball{
 
 var bullets = [];
 
-let retning1 = 4;
-let retning2 = 4;
+let retning1 = 8;
+let retning2 = 8;
 let hand1;
 let hand2;
 
 function keyPressed(){
     if (keyCode === 37){
-        retning1 = -4
+        retning1 = -8
     } else if (keyCode === 39){
-        retning1 = 4 
+        retning1 = 8 
     }
 
     if (keyCode === 68){
-        retning2 = 4;
+        retning2 = 8;
     } else if (keyCode === 65){
-        retning2 = -4;
+        retning2 = -8;
     }
 
     if (keyCode === 39){
@@ -64,7 +64,7 @@ function disableState(seconds) {
 function checkCooldown() {
     if (timeSeconds > 0){
         timeSeconds--
-        console.log(timeSeconds)
+      //  console.log(timeSeconds)
     } else
     onCooldown = false
 }
@@ -77,13 +77,14 @@ function disableState1(seconds) {
 function checkCooldown1() {
     if (timeSeconds > 0){
         timeSeconds--
-        console.log(timeSeconds)
+      //  console.log(timeSeconds)
     } else
     onCooldown1 = false
 }
 
 var onCooldown = false;
 var onCooldown1 = false;
+
 
 
 

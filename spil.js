@@ -1,5 +1,5 @@
 let Spiller1 = new Spiller(300, 20, 96, 28, 0, 0, 4, class1Weapon);
-let Spiller2 = new Spiller(100, 20, 96, 28, 0, 0, 4, class3Weapon);
+let Spiller2 = new Spiller(100, 20, 96, 28, 0, 0, 4, class2Weapon);
 
 var canvasW = 1600
 var canvasH = 740
@@ -111,6 +111,7 @@ function controls(e) {
 }
 
 
+
 function setup() {
     spilside = loadImage('Spilside.png');
     bg = loadImage('StartsideP.png');
@@ -149,6 +150,9 @@ function mouseClicked(){
     side = 0;
     }
 }
+
+var ramt1 = false;
+var ramt2 = false;
 
 
 function draw() {
@@ -212,16 +216,47 @@ function draw() {
         bullets[index].move();
         }  
         if (onCooldown === true) {
-            console.log("TimerActive")
+           // console.log("TimerActive")
             checkCooldown()
         }
         if (onCooldown1 === true) {
-            console.log("TimerActive")
+           // console.log("TimerActive")
             checkCooldown1()
         }
-    }
 
+        for (let i = 0; i < bullets.length; i++) {
+            ramt1 = collideRectCircle(Spiller1.x, Spiller1.y, Spiller1.width, Spiller1.heigth, bullets[i].x, bullets[i].y, bullets[0].h)
+            
+            if(ramt1 === true){
+                Spiller1.y += Spiller2.weaponEquiped.damage*25;
+            }
+        }
+        for (let j = 0; j < bullets.length; j++) {
+            ramt2 = collideRectCircle(Spiller2.x, Spiller2.y, Spiller2.width, Spiller2.heigth, bullets[j].x, bullets[j].y, bullets[0].h)
+
+            if(ramt2 === true){
+                Spiller2.y += Spiller1.weaponEquiped.damage*25;
+            }
+
+            
+        }
+
+        stroke(color(14,177, 236));
+        strokeWeight(2);
+        textSize(24);
+
+        if(Spiller1.x >= canvasH + 200){
+            text("Spiller 2 vinder!", canvasW/2, canvasH/2)
+        } else if(Spiller2.x >= canvasH + 200){
+            text("Spiller 1 vinder!", canvasW/2, canvasH/2)
+            
+        }
+        
+    }
     
+
+
+
 
     //Tilbage knap lys
     if (side === 2 && 8 < mouseX && mouseX < 128 && 8 < mouseY && mouseY < 59){
