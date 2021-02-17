@@ -1,5 +1,5 @@
 class Spiller {
-    constructor(x, y, heigth, width, speedX, speedY, speed, weaponEquiped) {
+    constructor(x, y, heigth, width, speedX, speedY, speed, weaponEquiped, img1, img2) {
         this.x = x;
         this.y = y;
         this.heigth = heigth;
@@ -8,17 +8,10 @@ class Spiller {
         this.speedY = speedY;
         this.speed = speed;
         this.weaponEquiped = weaponEquiped;
+        this.img1 = img1
+        this.img2 = img2
         this.collision = false;
         this.jumpActive = false;
-    }
-
-    tegn() {
-        if(aniState === 1) {
-            image(player1Ani1, this.x, this.y);
-        }
-        else {
-            image(player1Ani2, this.x, this.y);
-        }
     }
     
     tegnWeapon() {

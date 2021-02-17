@@ -22,6 +22,26 @@ function aniSwitcher() {
     }
 }
 
+
+function tegn1() {
+    if(aniState === 1) {
+        image(player1Ani1, Spiller1.x, Spiller1.y);
+    }
+    else {
+        image(player1Ani2, Spiller1.x, Spiller1.y);
+    }
+}
+
+function tegn2() {
+    if(aniState === 1) {
+        image(player2Ani1, Spiller2.x, Spiller2.y);
+    }
+    else {
+        image(player2Ani2, Spiller2.x, Spiller2.y);
+    }
+}
+
+
 function keyReleased() { //der er her palds til forbedringer i forhold til helt clean movement. Mangler fiks til p2 - rækkefølge matters åbenbart 
     if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) { //Spiller1
         Spiller1.speedX = 0;
@@ -118,8 +138,8 @@ function setup() {
     set = loadImage('SettingssideP2.png')
     player1Ani1 = loadImage('IdleP1.png'); //B72 H192
     player1Ani2 = loadImage('Player1.png');
-    player2Ani1 = loadImage('IdleP1.png'); //B72 H192
-    player2Ani2 = loadImage('Player1.png');
+    player2Ani1 = loadImage('IdleP2.png'); //B72 H192
+    player2Ani2 = loadImage('Player2.png');
     pistolIMG = loadImage('pistol.png');
     uziIMG = loadImage('uzi.png');
     sniperIMG = loadImage('sniper.png');
@@ -197,7 +217,7 @@ function draw() {
         Spiller1.collisionButtonY();
         Spiller1.updateJump();
         Spiller1.fall();
-        Spiller1.tegn();
+        tegn1();
         Spiller1.tegnWeapon();
 
         //Spiller2.tegn();
@@ -205,7 +225,7 @@ function draw() {
         Spiller2.collisionButtonY();
         Spiller2.updateJump();
         Spiller2.fall();
-        Spiller2.tegn();
+        tegn2();
         Spiller2.tegnWeapon();
 
         document.onkeydown = controls;
@@ -245,9 +265,9 @@ function draw() {
         strokeWeight(2);
         textSize(24);
 
-        if(Spiller1.x >= canvasH + 200){
+        if(Spiller1.x >= canvasH + 100){
             text("Spiller 2 vinder!", canvasW/2, canvasH/2)
-        } else if(Spiller2.x >= canvasH + 200){
+        } else if(Spiller2.x >= canvasH + 100){
             text("Spiller 1 vinder!", canvasW/2, canvasH/2)
             
         }
