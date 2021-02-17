@@ -1,3 +1,7 @@
+//side 0 = Startside
+//side 1 = Spil
+//side 2 = Settings
+
 let Spiller1 = new Spiller(300, 20, 50, 50, 0, 0, 255, 0, 0);
 let Spiller2 = new Spiller(100, 20, 50, 50, 0, 0, 0, 255, 0);
 
@@ -107,8 +111,8 @@ function setup() {
     if (side === 2 && 8 < mouseX && mouseX < 128 && 8 < mouseY && mouseY < 59){
       console.log("Side 0")
       removeElements();
-      
-      
+      lyd.stop();
+      sliderActive = false;
       side = 0;
     }
 
@@ -124,15 +128,17 @@ function draw() {
         rect(625,428,349,100);
     } 
     //Settings knap lys
-    if (side === 0 && 625 < mouseX && mouseX < (625 + 349) && 542 < mouseY && mouseY < 642){
+    if (side === 0 && 625 < mouseX && mouseX < (625 + 349) && 549 < mouseY && mouseY < (549 + 104)){
         fill(0,0,0,63);
-        rect(625,542,349,100);
+        rect(625,549,349,104);
     } 
 
-    if (side === 0){
-        sliderActive = false;
-        lyd.stop();
-    }
+
+
+    if (side === 0 ){
+        
+        
+    } 
 
     if (side === 1){
 
@@ -163,6 +169,7 @@ function draw() {
         val = slider.value();
         lyd.setVolume(val);
         lyd.play();
+        //lyd.loop();
         sliderActive = true;
     } else if (side === 2) {
         val = slider.value();
@@ -176,10 +183,9 @@ function draw() {
         text("Volume", 500, 328)
     }
 
-
-    //Tilbage knap lys
-    if (side === 2 && 8 < mouseX && mouseX < 128 && 8 < mouseY && mouseY < 59){
-        fill(0,0,0,63);
-        rect(8,8,120,51);
+        //Tilbage knap lys
+        if (side === 2 && 8 < mouseX && mouseX < 128 && 8 < mouseY && mouseY < 59){
+            fill(0,0,0,63);
+            rect(8,8,120,51);
+        }
     }
-}
