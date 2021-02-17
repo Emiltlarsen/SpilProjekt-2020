@@ -23,45 +23,36 @@ class ball{
 
 var bullets = [];
 
-
-function setup() {
-    createCanvas(900, 600);
-}
-
-function draw() {
-    background(220);
-    document.onkeydown=skyd;
-        for (let index = 0; index < bullets.length; index++) {
-        bullets[index].display();
-        bullets[index].move();
-        }  
-        if (onCooldown === true) {
-            console.log("TimerActive")
-            checkCooldown()
-        }
-        if (onCooldown1 === true) {
-            console.log("TimerActive")
-            checkCooldown1()
-        }
-    
-}
-
-
-let retning1 = 4;
-let retning2 = 4;
+let retning1 = 8;
+let retning2 = 8;
+let hand1;
+let hand2;
 
 function keyPressed(){
     if (keyCode === 37){
-        retning1 = -4
+        retning1 = -8
     } else if (keyCode === 39){
-        retning1 = 4 
+        retning1 = 8 
     }
 
     if (keyCode === 68){
-        retning2 = 4;
+        retning2 = 8;
     } else if (keyCode === 65){
-        retning2 = -4;
+        retning2 = -8;
     }
+
+    if (keyCode === 39){
+        hand1 = 50;
+    } else if (keyCode === 37){
+        hand1 = 0;
+    }
+
+    if (keyCode === 68){
+        hand2 = 50;
+    } else if (keyCode === 65){
+        hand2 = 0;
+    }
+    
 
 }
 
@@ -73,7 +64,7 @@ function disableState(seconds) {
 function checkCooldown() {
     if (timeSeconds > 0){
         timeSeconds--
-        console.log(timeSeconds)
+      //  console.log(timeSeconds)
     } else
     onCooldown = false
 }
@@ -86,7 +77,7 @@ function disableState1(seconds) {
 function checkCooldown1() {
     if (timeSeconds > 0){
         timeSeconds--
-        console.log(timeSeconds)
+      //  console.log(timeSeconds)
     } else
     onCooldown1 = false
 }
@@ -95,21 +86,6 @@ var onCooldown = false;
 var onCooldown1 = false;
 
 
-function skyd(h){
-    if(h.keyCode === 76 && onCooldown === false) {
-        var patron = new ball(100, 150, 40, 255, retning1)
-        bullets.push(patron);
-        disableState(3);
-    console.log("bang!")
-    }
 
-    if(h.keyCode === 66 && onCooldown1 === false) {
-        var bullet = new ball(200, 300, 40, 255, retning2)
-        bullets.push(bullet);
-        disableState1(3);
-    console.log("bumbum")
-    }
-
-}
 
 console.log(bullets)
